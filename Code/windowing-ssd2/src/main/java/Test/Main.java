@@ -7,16 +7,19 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        int[] bounds = {50, 50}; //limit size of the window
-        int iterations = 10; //how many segments to generate
-
-        writeSegmentsFile(bounds, iterations);
+        int[] bounds = {790, 550}; //limit size of the window
+        int[] iterations = {10,50,100,1000} ;
+        for (int i: iterations) {
+            writeSegmentsFile(bounds, i);
+        }
     }
 
     private static void writeSegmentsFile(int[] bounds, int iterations) {
-        try(FileWriter fw = new FileWriter(iterations + "_segments.txt")){
+
+        String path = "src/main/resources/data/"+iterations + "_segments.txt";
+        try(FileWriter fw = new FileWriter(path)){
             fw.write("0 "+ bounds[0] +" 0 "+ bounds[1] +"\n");
-            for(int i = 0; i< iterations; i++){
+            for(int i = 0; i < iterations; i++){
                 int[] segment = segmentRandomCreation(bounds);
                 for (int coord: segment) {
                     fw.write(coord +" ");
