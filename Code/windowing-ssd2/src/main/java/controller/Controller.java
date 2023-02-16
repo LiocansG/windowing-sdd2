@@ -70,7 +70,9 @@ public class Controller {
         File defaultDirectory = new File(path);
         directoryChooser.setInitialDirectory(defaultDirectory);
         File selectedDirectory = directoryChooser.showDialog(MainApplication.stage);
-        path = selectedDirectory.getAbsolutePath();
-        fillComboBoxItem();
+        if (selectedDirectory != null) {
+            path = selectedDirectory.getAbsolutePath();
+            fillComboBoxItem();
+        }
     }
 }
