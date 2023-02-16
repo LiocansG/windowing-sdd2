@@ -9,7 +9,8 @@ import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 
 public class MainApplication extends Application {
-    public static Stage stage;
+
+    private static Stage stage;
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,4 +24,9 @@ public class MainApplication extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
 }

@@ -1,6 +1,5 @@
 package controller;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,7 +17,6 @@ public class Controller {
     private ComboBox directoryComboBox;
     @FXML
     private Canvas canvas;
-
 
     @FXML
     public void initialize(){
@@ -69,7 +67,7 @@ public class Controller {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File defaultDirectory = new File(path);
         directoryChooser.setInitialDirectory(defaultDirectory);
-        File selectedDirectory = directoryChooser.showDialog(MainApplication.stage);
+        File selectedDirectory = directoryChooser.showDialog(MainApplication.getStage());
         if (selectedDirectory != null) {
             path = selectedDirectory.getAbsolutePath();
             fillComboBoxItem();
