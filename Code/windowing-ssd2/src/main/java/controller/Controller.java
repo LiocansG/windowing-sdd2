@@ -35,6 +35,7 @@ public class Controller {
     }
 
     public void draw(ActionEvent event) throws IOException {
+        event.consume();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
@@ -52,5 +53,11 @@ public class Controller {
             gc.strokeLine(tab[0], tab[1], tab[2], tab[3]);
 
         }
+    }
+
+    public void clearCanvas(ActionEvent event) throws IOException{
+        event.consume();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 }

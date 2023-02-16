@@ -4,7 +4,6 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
-group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -24,6 +23,7 @@ javafx {
 test {
     useJUnitPlatform()
 }
+
 application {
     mainClassName = "TestMain"
 }
