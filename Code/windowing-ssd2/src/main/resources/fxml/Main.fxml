@@ -20,7 +20,7 @@
             <children>
             <Pane prefHeight="192.0" prefWidth="256.0">
                <children>
-                  <Button fx:id="btnOverview" alignment="CENTER" layoutY="6.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Change Directory" textFill="#e7e5e5">
+                  <Button fx:id="btnOverview" alignment="CENTER" mnemonicParsing="false" onAction="#changeDirectory" prefHeight="65.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Change Directory" textFill="#e7e5e5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -28,7 +28,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="57.0" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
+                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="68.0" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
                </children>
             </Pane>
             <Separator prefWidth="200.0" />
@@ -81,7 +81,7 @@
             <Separator prefWidth="200.0" />
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                      <Button fx:id="btnCustomers" alignment="CENTER" graphicTextGap="22.0" layoutY="47.0" mnemonicParsing="false" onAction="#draw" prefHeight="42.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Load Data">
+                      <Button fx:id="btnCustomers" alignment="CENTER" graphicTextGap="22.0" layoutY="-2.0" mnemonicParsing="false" onAction="#draw" prefHeight="144.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Load Data">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -91,7 +91,7 @@
             <Separator prefWidth="200.0" />
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                      <Button fx:id="btnOrders" alignment="BASELINE_CENTER" layoutY="47.0" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="42.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Clear Canvas">
+                      <Button fx:id="btnOrders" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="144.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Clear Canvas">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -104,7 +104,7 @@
             <children>
                 <Pane fx:id="pnlCanvas" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Canvas fx:id="canvas" height="576.0" layoutX="-14.0" width="793.0" />
+                  <Canvas fx:id="canvas" height="576.0" width="793.0" />
                </children></Pane>
             </children>
         </StackPane>

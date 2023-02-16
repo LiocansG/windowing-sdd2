@@ -7,8 +7,8 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        int[] bounds = {790, 550}; //limit size of the window
-        int[] iterations = {10,50,100,1000} ;
+        int[] bounds = {790, 570}; //limit size of the window
+        int[] iterations = {10, 100, 1000, 10000, 100000} ;
         for (int i: iterations) {
             writeSegmentsFile(bounds, i);
         }
@@ -16,7 +16,7 @@ public class Main {
 
     private static void writeSegmentsFile(int[] bounds, int iterations) {
 
-        String path = "src/main/resources/data/"+iterations + "_segments.txt";
+        String path = "src/main/resources/data/"+ iterations + "_segments.txt";
         try(FileWriter fw = new FileWriter(path)){
             fw.write("0 "+ bounds[0] +" 0 "+ bounds[1] +"\n");
             for(int i = 0; i < iterations; i++){

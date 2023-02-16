@@ -1,47 +1,52 @@
 package controller;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
+import javafx.stage.DirectoryChooser;
+import graphic.MainApplication;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Controller {
 
-    String path = "src/main/resources/data";
+    private String path = "src/main/resources/data";
     @FXML
-    ComboBox directoryComboBox;
+    private ComboBox directoryComboBox;
     @FXML
-    Pane pnlCanvas;
-    @FXML
-    Canvas canvas;
+    private Canvas canvas;
 
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize(){
+        fillComboBoxItem();
+    }
+
+    public void fillComboBoxItem(){
+        directoryComboBox.getItems().removeAll(directoryComboBox.getItems());
         File[] files = new File(path).listFiles();
-        ArrayList<String> listFiles = new ArrayList<String>();
+        ArrayList<String> listFiles = new ArrayList<>();
         for (File f : files) {
             listFiles.add(f.getName());
         }
+
+        Collections.sort(listFiles, Collections.reverseOrder());
+
+
         directoryComboBox.getItems().addAll(listFiles);
         directoryComboBox.setValue(listFiles.get(0));
     }
 
-    public void draw(ActionEvent event) throws IOException {
-        event.consume();
+    public void draw() throws IOException {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
         BufferedReader br = new BufferedReader(fileR);
         String line;
-        String[] temp = new String[0];
+        String[] temp;
         Double[] tab;
         while ((line = br.readLine()) != null) {
             temp = line.split(" ");
@@ -55,9 +60,17 @@ public class Controller {
         }
     }
 
-    public void clearCanvas(ActionEvent event) throws IOException{
-        event.consume();
+    public void clearCanvas(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    public void changeDirectory(){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File defaultDirectory = new File(path);
+        directoryChooser.setInitialDirectory(defaultDirectory);
+        File selectedDirectory = directoryChooser.showDialog(MainApplication.stage);
+        path = selectedDirectory.getAbsolutePath();
+        fillComboBoxItem();
     }
 }
