@@ -1,39 +1,50 @@
 package structure;
 
 public class PSTNode {
-    private int key;
-    private int priority;
-    private PSTNode left;
-    private PSTNode right;
+    private Segment segment;
+    private int median;
+    private PSTNode leftChild;
+    private PSTNode rightChild;
 
-    public PSTNode(int key, int priority) {
-        this.key = key;
-        this.priority = priority;
-        this.left = null;
-        this.right = null;
+    public PSTNode(Segment segment, PSTNode leftChild, PSTNode rightChild) {
+        this.segment = segment;
+        this.leftChild = null;
+        this.rightChild = null;
+        this.median = Math.max(
+                leftChild != null ? leftChild.getMedian() : Integer.MIN_VALUE,
+                rightChild != null ? rightChild.getMedian() : Integer.MIN_VALUE
+        );
     }
 
-    public int getKey() {
-        return this.key;
+    public PSTNode(Segment segment) {
+        this(segment, null, null);
     }
 
-    public int getPriority() {
-        return this.priority;
+    public Segment getSegment() {
+        return this.segment;
     }
 
-    public PSTNode getLeft() {
-        return this.left;
+    public int getMedian() {
+        return this.median;
     }
 
-    public void setLeft(PSTNode node) {
-        this.left = node;
+    public void setMedian(int median) {
+        this.median = median;
     }
 
-    public PSTNode getRight() {
-        return this.right;
+    public PSTNode getLeftChild() {
+        return this.leftChild;
     }
 
-    public void setRight(PSTNode node) {
-        this.right = node;
+    public void setLeftChild(PSTNode node) {
+        this.leftChild = node;
+    }
+
+    public PSTNode getRightChild() {
+        return this.rightChild;
+    }
+
+    public void setRightChild(PSTNode node) {
+        this.rightChild = node;
     }
 }

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PSTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PSTNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
     </list>
@@ -70,7 +68,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/segments-windowing-master",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-sdd2-master",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
