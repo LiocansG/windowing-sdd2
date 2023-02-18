@@ -7,6 +7,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import graphic.MainApplication;
+import structure.PrioritySearchTree;
+import structure.Segment;
+
 import java.io.*;
 import java.util.*;
 
@@ -17,6 +20,8 @@ public class Controller {
     private ComboBox directoryComboBox;
     @FXML
     private Canvas canvas;
+
+    private PrioritySearchTree PST;
 
     @FXML
     public void initialize(){
@@ -46,6 +51,7 @@ public class Controller {
         String line;
         String[] temp;
         Double[] tab;
+        br.readLine();
         while ((line = br.readLine()) != null) {
             temp = line.split(" ");
             tab = new Double[4];
@@ -54,7 +60,6 @@ public class Controller {
             }
             gc.setFill(Color.BLUE);
             gc.strokeLine(tab[0], tab[1], tab[2], tab[3]);
-
         }
     }
 
@@ -72,5 +77,23 @@ public class Controller {
             path = selectedDirectory.getAbsolutePath();
             fillComboBoxItem();
         }
+    }
+
+    public void loadingDataFromFile() throws IOException {
+        FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
+        BufferedReader br = new BufferedReader(fileR);
+        String line;
+        String[] temp;
+        Double[] tab;
+        ArrayList<Segment> segments = new ArrayList<>();
+        while ((line = br.readLine()) != null) {
+            temp = line.split(" ");
+            tab = new Double[4];
+            for (int i = 0; i < 4; i++) {
+                tab[i] = Double.parseDouble(temp[i]);
+            }
+            segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
+        }
+        PST = new PrioritySearchTree(segments);
     }
 }

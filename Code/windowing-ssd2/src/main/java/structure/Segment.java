@@ -1,32 +1,52 @@
 package structure;
 
 public class Segment {
-    private final int x;
-    private final int y;
-    private final int xprime;
-    private final int yprime;
+    private final double x;
+    private final double y;
+    private final double xPrime;
+    private final double yPrime;
 
-    public Segment(int x, int y, int xprime, int yprime) {
-        this.x = x;
-        this.y = y;
-        this.xprime = xprime;
-        this.yprime = yprime;
+    public Segment(double x, double y, double xPrime, double yPrime) {
+        if(y < yPrime || (y == yPrime && x <= xPrime)){
+            this.x = x;
+            this.y = y;
+            this.xPrime = xPrime;
+            this.yPrime = yPrime;
+        }else{
+            this.x = xPrime;
+            this.y = yPrime;
+            this.xPrime = x;
+            this.yPrime = y;
+        }
     }
 
-    public int getX() {
+    public double getX() {
         return this.x;
     }
 
-    public int getY() {
+    public double getY() {
         return this.y;
     }
 
-    public int getXPrime() {
-        return this.xprime;
+    public double getxPrime() {
+        return this.xPrime;
     }
 
-    public int getYPrime() {
-        return this.yprime;
+    public double getyPrime() {
+        return this.yPrime;
+    }
+
+    public double getMiddleY(){return (y + yPrime) / 2;}
+
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "x=" + x +
+                ", y=" + y +
+                ", xPrime=" + xPrime +
+                ", yPrime=" + yPrime +
+                '}';
     }
 }
 

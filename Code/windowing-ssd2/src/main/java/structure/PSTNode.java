@@ -8,12 +8,9 @@ public class PSTNode {
 
     public PSTNode(Segment segment, PSTNode leftChild, PSTNode rightChild) {
         this.segment = segment;
-        this.leftChild = null;
-        this.rightChild = null;
-        this.median = Math.max(
-                leftChild != null ? leftChild.getMedian() : Integer.MIN_VALUE,
-                rightChild != null ? rightChild.getMedian() : Integer.MIN_VALUE
-        );
+        this.leftChild = leftChild;
+        this.rightChild = rightChild;
+        this.median = 0;
     }
 
     public PSTNode(Segment segment) {
@@ -46,5 +43,41 @@ public class PSTNode {
 
     public void setRightChild(PSTNode node) {
         this.rightChild = node;
+    }
+
+    public boolean isLeaf() {
+        return (leftChild == null && rightChild == null);
+    }
+
+    public double getMaxYLeft(){
+        return getLeftChild().getSegment().getyPrime();
+    }
+
+    public double getMinYLeft(){
+        return getLeftChild().getSegment().getY();
+    }
+
+    public double getMaxXLeft(){
+        return getLeftChild().getSegment().getxPrime();
+    }
+
+    public double getMinXLeft(){
+        return getLeftChild().getSegment().getX();
+    }
+
+    public double getMaxYRight(){
+        return getRightChild().getSegment().getyPrime();
+    }
+
+    public double getMinYRight(){
+        return getRightChild().getSegment().getY();
+    }
+
+    public double getMaxXRight(){
+        return getRightChild().getSegment().getxPrime();
+    }
+
+    public double getMinXRight(){
+        return getRightChild().getSegment().getX();
     }
 }
