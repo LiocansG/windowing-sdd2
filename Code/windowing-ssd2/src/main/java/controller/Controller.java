@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import graphic.MainApplication;
+import structure.PSTNode;
 import structure.PrioritySearchTree;
 import structure.Segment;
 
@@ -43,7 +44,7 @@ public class Controller {
         directoryComboBox.setValue(listFiles.get(0));
     }
 
-    public void draw() throws IOException {
+    public void drawSegments() throws IOException {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
@@ -61,6 +62,26 @@ public class Controller {
             gc.setFill(Color.BLUE);
             gc.strokeLine(tab[0], tab[1], tab[2], tab[3]);
         }
+    }
+
+    public void draw(){
+        clearCanvas();
+        drawPst(PST.getRoot());
+    }
+
+    public void drawPst(PSTNode currentNode){
+
+        if(currentNode != null){
+            drawPst(currentNode.getLeftChild());
+            displaySegment(currentNode.getSegment());
+            drawPst(currentNode.getRightChild());
+        }
+    }
+
+    private void displaySegment(Segment segment) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.RED);
+        gc.strokeLine(segment.getX(), segment.getY(), segment.getxPrime(), segment.getyPrime());
     }
 
     public void clearCanvas(){
