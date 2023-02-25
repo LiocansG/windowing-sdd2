@@ -71,6 +71,18 @@ public class PrioritySearchTree {
         }
     }
 
+    public void displayPst(PSTNode currentNode){
+        if(this.root != null){
+            if(currentNode.getLeftChild() != null){
+                displayPst(currentNode.getLeftChild());
+            }else{
+                if(currentNode.getRightChild() != null){
+                    displayPst(currentNode.getRightChild());
+                }
+            }
+        }
+    }
+
     public PSTNode getRoot() {
         return root;
     }
