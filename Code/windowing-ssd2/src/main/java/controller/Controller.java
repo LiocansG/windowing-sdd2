@@ -24,8 +24,9 @@ public class Controller {
     private PrioritySearchTree PST;
 
     @FXML
-    public void initialize(){
+    public void initialize() throws IOException {
         fillComboBoxItem();
+        loadingDataFromFile();
     }
 
     public void fillComboBoxItem(){
@@ -37,7 +38,6 @@ public class Controller {
         }
 
         Collections.sort(listFiles, Collections.reverseOrder());
-
 
         directoryComboBox.getItems().addAll(listFiles);
         directoryComboBox.setValue(listFiles.get(0));
