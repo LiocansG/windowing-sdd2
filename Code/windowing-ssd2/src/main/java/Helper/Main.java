@@ -6,21 +6,20 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-
-        int[] bounds = {790, 570}; //limit size of the window
+        Random r = new Random();
         int[] iterations = {10, 100, 1000, 10000, 100000} ;
         for (int i: iterations) {
-            writeSegmentsFile(bounds, i);
+            writeSegmentsFile(r.nextInt(1000 - 10) + 10, i);
         }
     }
 
-    private static void writeSegmentsFile(int[] bounds, int iterations) {
+    private static void writeSegmentsFile(int bound, int iterations) {
 
         String path = "src/main/resources/random_data_test/"+ iterations + "_segments.txt";
         try(FileWriter fw = new FileWriter(path)){
-            fw.write("0 "+ bounds[0] +" 0 "+ bounds[1] +"\n");
+            fw.write("-"+ bound + " " + bound + " -" + bound + " " + bound +"\n");
             for(int i = 0; i < iterations; i++){
-                int[] segment = segmentRandomCreation(bounds);
+                int[] segment = segmentRandomCreation(bound);
                 for (int coord: segment) {
                     fw.write(coord +" ");
                 }
@@ -31,7 +30,7 @@ public class Main {
         }
     }
 
-    private static int[] segmentRandomCreation(int[] bounds){
+    private static int[] segmentRandomCreation(int bound){
         int[] segment;
         Random rnd = new Random();
 
@@ -39,14 +38,14 @@ public class Main {
 
         int axis_lock = rnd.nextInt(2);
         if(axis_lock == 0){//lock X axis
-            x = rnd.nextInt(bounds[0]);
+            x = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
             x_prime = x;
-            y = rnd.nextInt(bounds[1]);
-            y_prime = rnd.nextInt(bounds[1]);
+            y = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
+            y_prime = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
         }else{//lock Y axis
-            x = rnd.nextInt(bounds[0]);
-            x_prime = rnd.nextInt(bounds[0]);
-            y = rnd.nextInt(bounds[1]);
+            x = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
+            x_prime = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
+            y = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
             y_prime = y;
         }
         segment = new int[]{x, y, x_prime, y_prime};

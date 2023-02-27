@@ -1,6 +1,8 @@
 package controller;
 
 import graphic.MainApplication;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -20,13 +22,15 @@ import java.util.Collections;
 
 public class Controller {
 
-    private String path = "src/main/resources/data_test";
     @FXML
     private ComboBox directoryComboBox;
     @FXML
     private Canvas canvas;
 
+    private String path = "src/main/resources/data_test";
     private PrioritySearchTree PST;
+    private ArrayList<Double> windowSize;
+    private Double ratio;
 
     @FXML
     public void initialize() throws IOException {
@@ -35,8 +39,12 @@ public class Controller {
     }
 
     public void fillComboBoxItem(){
+        EventHandler<ActionEvent> handler = directoryComboBox.getOnAction();
+        directoryComboBox.setOnAction(null);
         directoryComboBox.getItems().removeAll(directoryComboBox.getItems());
-        File[] files = new File(path).listFiles();
+        directoryComboBox.setOnAction(handler);
+        File file = new File(path);
+        File[] files = file.listFiles();
         ArrayList<String> listFiles = new ArrayList<>();
         for (File f : files) {
             listFiles.add(f.getName());
@@ -46,26 +54,6 @@ public class Controller {
 
         directoryComboBox.getItems().addAll(listFiles);
         directoryComboBox.setValue(listFiles.get(0));
-    }
-
-    public void drawSegments() throws IOException {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
-        BufferedReader br = new BufferedReader(fileR);
-        String line;
-        String[] temp;
-        Double[] tab;
-        br.readLine();
-        while ((line = br.readLine()) != null) {
-            temp = line.split(" ");
-            tab = new Double[4];
-            for (int i = 0; i < 4; i++) {
-                tab[i] = Double.parseDouble(temp[i]);
-            }
-            gc.setFill(Color.BLUE);
-            gc.strokeLine(tab[0], tab[1], tab[2], tab[3]);
-        }
     }
 
     public void draw(){
@@ -83,9 +71,15 @@ public class Controller {
     }
 
     private void displaySegment(Segment segment) {
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.RED);
-        gc.strokeLine(segment.getX(), segment.getY(), segment.getxPrime(), segment.getyPrime());
+        gc.strokeLine(
+                (segment.getX() * ratio) + (canvas.getWidth()/2),
+                (segment.getY() * ratio) + (canvas.getHeight()/2),
+                (segment.getxPrime() * ratio) + (canvas.getWidth()/2),
+                (segment.getyPrime() * ratio) + (canvas.getHeight()/2)
+        );
     }
 
     public void clearCanvas(){
@@ -105,12 +99,21 @@ public class Controller {
     }
 
     public void loadingDataFromFile() throws IOException {
+        windowSize = new ArrayList<>();
         FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
         BufferedReader br = new BufferedReader(fileR);
         String line;
         String[] temp;
         Double[] tab;
         ArrayList<Segment> segments = new ArrayList<>();
+        line = br.readLine();
+        temp = line.split(" ");
+        for (int i = 0; i < 4; i++) {
+            windowSize.add(Double.parseDouble(temp[i]));
+        }
+
+        ratio = Math.min(canvas.getWidth() / (Math.abs(windowSize.get(0)) + Math.abs(windowSize.get(2))), canvas.getHeight() / (Math.abs(windowSize.get(1)) + Math.abs(windowSize.get(3))));
+
         while ((line = br.readLine()) != null) {
             temp = line.split(" ");
             tab = new Double[4];

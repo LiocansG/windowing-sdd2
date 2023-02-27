@@ -7,17 +7,14 @@
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/100000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/10000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/1000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/100_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/10_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PrioritySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PrioritySearchTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +93,7 @@
       <command value="gradle run" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.PrioritySearchTreeTest">
+  <component name="RunManager" selected="Application.TestMain">
     <configuration name="Helper.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Helper.Main" />
       <module name="windowing-ssd2.main" />

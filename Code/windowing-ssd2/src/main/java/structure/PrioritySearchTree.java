@@ -83,23 +83,12 @@ public class PrioritySearchTree {
         }
     }
 
-    public void displayPst(PSTNode currentNode){
-        if(this.root != null){
-            if(currentNode.getLeftChild() != null){
-                displayPst(currentNode.getLeftChild());
-            }else{
-                if(currentNode.getRightChild() != null){
-                    displayPst(currentNode.getRightChild());
-                }
-            }
-        }
-    }
-
     public PSTNode getRoot() {
         return root;
     }
 
     private ArrayList<Segment> creatingSegments(String path) {
+        ArrayList<Segment> segments = new ArrayList<>();
         try {
             FileReader fileR = new FileReader(path);
             BufferedReader br = new BufferedReader(fileR);
@@ -107,7 +96,6 @@ public class PrioritySearchTree {
             String[] temp;
             Double[] tab;
             br.readLine();
-            ArrayList<Segment> segments = new ArrayList<>();
             while ((line = br.readLine()) != null) {
                 temp = line.split(" ");
                 tab = new Double[4];
@@ -116,10 +104,10 @@ public class PrioritySearchTree {
                 }
                 segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
             }
-            return segments;
         } catch (Exception e) {
             System.out.println(e);
-            return null;
         }
+        return segments;
+
     }
 }
