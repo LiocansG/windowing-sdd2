@@ -16,7 +16,7 @@ public class Main {
 
     private static void writeSegmentsFile(int[] bounds, int iterations) {
 
-        String path = "src/main/resources/data/"+ iterations + "_segments.txt";
+        String path = "src/main/resources/random_data_test/"+ iterations + "_segments.txt";
         try(FileWriter fw = new FileWriter(path)){
             fw.write("0 "+ bounds[0] +" 0 "+ bounds[1] +"\n");
             for(int i = 0; i < iterations; i++){

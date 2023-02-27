@@ -1,16 +1,11 @@
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
-import structure.Segment;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
 
 public class PrioritySearchTreeTest {
 
-    PrioritySearchTree prioritySearchTree = new PrioritySearchTree(creatingSegments("src/main/resources/data/10_segments.txt"));
+    PrioritySearchTree prioritySearchTree = new PrioritySearchTree("src/main/resources/data_test/1000.txt");
 
     @Test
     public void checkTree(){
@@ -45,28 +40,6 @@ public class PrioritySearchTreeTest {
         return conform;
     }
 
-    private ArrayList<Segment> creatingSegments(String path) {
-        try {
-            FileReader fileR = new FileReader(path);
-            BufferedReader br = new BufferedReader(fileR);
-            String line;
-            String[] temp;
-            Double[] tab;
-            br.readLine();
-            ArrayList<Segment> segments = new ArrayList<>();
-            while ((line = br.readLine()) != null) {
-                temp = line.split(" ");
-                tab = new Double[4];
-                for (int i = 0; i < 4; i++) {
-                    tab[i] = Double.parseDouble(temp[i]);
-                }
-                segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
-            }
-            return segments;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
-    }
+
 
 }

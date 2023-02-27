@@ -1,5 +1,5 @@
-import javafx.application.Application;
 import graphic.MainApplication;
+import javafx.application.Application;
 
 public class TestMain {
 

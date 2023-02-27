@@ -6,7 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/100000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/10000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/1000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/100_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/10_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PrioritySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PrioritySearchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,22 +73,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utilisateur/Desktop/windowing-sdd2-master/src&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-sdd2-master",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utilisateur\Desktop\windowing-ssd2\Code\windowing-ssd2\src\main\resources\data_test" />
       <recent name="C:\Users\Utilisateur\Desktop\windowing-ssd2\Code\windowing-ssd2\src\main\java\Test" />
       <recent name="C:\Users\Utilisateur\Desktop\windowing-ssd2\Code\windowing-ssd2\src\main\resources\data" />
       <recent name="C:\Users\Utilisateur\IdeaProjects\windowing-ssd2\src\main\resources\images" />
       <recent name="C:\Users\Utilisateur\IdeaProjects\windowing-ssd2\src\main\resources\fxml" />
-      <recent name="C:\Users\Utilisateur\IdeaProjects\windowing-ssd2\src\main\resources" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -85,7 +96,7 @@
       <command value="gradle run" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMain">
+  <component name="RunManager" selected="Gradle.PrioritySearchTreeTest">
     <configuration name="Helper.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Helper.Main" />
       <module name="windowing-ssd2.main" />
@@ -167,8 +178,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestMain" />
         <item itemvalue="Gradle.PrioritySearchTreeTest" />
+        <item itemvalue="Application.TestMain" />
         <item itemvalue="Gradle.PrioritySearchTreeTest.checkTree" />
         <item itemvalue="Application.Helper.Main" />
         <item itemvalue="Application.Main" />

@@ -1,22 +1,26 @@
 package controller;
 
+import graphic.MainApplication;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
-import graphic.MainApplication;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
 import structure.Segment;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Controller {
 
-    private String path = "src/main/resources/data";
+    private String path = "src/main/resources/data_test";
     @FXML
     private ComboBox directoryComboBox;
     @FXML

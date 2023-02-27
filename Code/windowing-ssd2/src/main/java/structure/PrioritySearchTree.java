@@ -1,4 +1,6 @@
 package structure;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -7,6 +9,16 @@ public class PrioritySearchTree {
     private PSTNode root;
 
     public PrioritySearchTree(ArrayList<Segment> segments){
+
+        // Sort the segments by their y-coordinate
+        segments.sort(Comparator.comparingDouble(Segment::getMiddleY));
+        root = buildPST(segments);
+    }
+
+    public PrioritySearchTree(String path){
+
+        ArrayList<Segment> segments = creatingSegments(path);
+
         // Sort the segments by their y-coordinate
         segments.sort(Comparator.comparingDouble(Segment::getMiddleY));
         root = buildPST(segments);
@@ -85,5 +97,29 @@ public class PrioritySearchTree {
 
     public PSTNode getRoot() {
         return root;
+    }
+
+    private ArrayList<Segment> creatingSegments(String path) {
+        try {
+            FileReader fileR = new FileReader(path);
+            BufferedReader br = new BufferedReader(fileR);
+            String line;
+            String[] temp;
+            Double[] tab;
+            br.readLine();
+            ArrayList<Segment> segments = new ArrayList<>();
+            while ((line = br.readLine()) != null) {
+                temp = line.split(" ");
+                tab = new Double[4];
+                for (int i = 0; i < 4; i++) {
+                    tab[i] = Double.parseDouble(temp[i]);
+                }
+                segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
+            }
+            return segments;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 }
