@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Segment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/1000_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/100_segments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/random_data_test/10_segments.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +70,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-sdd2-master",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-ssd2/Code/windowing-ssd2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>

@@ -18,7 +18,6 @@ public class PrioritySearchTree {
     public PrioritySearchTree(String path){
 
         ArrayList<Segment> segments = creatingSegments(path);
-
         // Sort the segments by their y-coordinate
         segments.sort(Comparator.comparingDouble(Segment::getMiddleY));
         root = buildPST(segments);
@@ -45,7 +44,7 @@ public class PrioritySearchTree {
         // Know were is the median
         int median = segments.size() / 2;
 
-        node.setMedian((int) node.getSegment().getMiddleY());
+        node.setMedian((int) node.getSegment().getY());
         node.setLeftChild(buildPST(new ArrayList<Segment>(segments.subList(0, median))));
         node.setRightChild(buildPST(new ArrayList<Segment>(segments.subList(median, segments.size()))));
 

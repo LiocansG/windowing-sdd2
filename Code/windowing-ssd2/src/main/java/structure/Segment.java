@@ -38,7 +38,6 @@ public class Segment {
 
     public double getMiddleY(){return (y + yPrime) / 2;}
 
-
     @Override
     public String toString() {
         return "Segment{" +
