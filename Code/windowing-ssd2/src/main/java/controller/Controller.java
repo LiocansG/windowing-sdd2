@@ -101,8 +101,8 @@ public class Controller {
 
     public void resetCoordinates(){
         xField.setText("-" + '\u221E');
-        xPrimeField.setText("-" + '\u221E');
-        yField.setText("+" + '\u221E');
+        xPrimeField.setText("+" + '\u221E');
+        yField.setText("-" + '\u221E');
         yPrimeField.setText("+" + '\u221E');
     }
 
@@ -115,16 +115,28 @@ public class Controller {
         }
     }
 
+    private double applyRatio(double value, boolean isX){
+        if(isX)
+            return (value * ratio) + (canvas.getWidth()/2);
+        return (value * ratio) + (canvas.getHeight()/2);
+    }
+
     private void drawWindow(){
-        int x = xField.getText().contains("\u221E") ? windowSize.get(0).intValue() : Integer.parseInt(xField.getText());
-        int y = yField.getText().contains("\u221E") ? windowSize.get(2).intValue() : Integer.parseInt(yField.getText());
-        int height = (int) ((xPrimeField.getText().contains("\u221E") ? windowSize.get(1) : Integer.parseInt(xPrimeField.getText())) - x);
-        int width = (int) ((yPrimeField.getText().contains("\u221E") ? windowSize.get(3) : Integer.parseInt(xPrimeField.getText())) - y);
-        gc.setStroke(Color.RED);
-        gc.setLineWidth(2);
-        gc.strokeRect((x * ratio) + (canvas.getWidth()/2), y * ratio + (canvas.getHeight()/2), width * ratio, height * ratio);
-        gc.setLineWidth(1);
-        gc.setStroke(Color.BLACK);
+        double x = applyRatio(xField.getText().contains("\u221E") ? windowSize.get(0): Double.parseDouble(xField.getText()), true);
+        double y = applyRatio(yField.getText().contains("\u221E") ? windowSize.get(2) : Double.parseDouble(yField.getText()), false);
+        double xPrime = applyRatio(xPrimeField.getText().contains("\u221E") ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()), true);
+        double yPrime = applyRatio(yPrimeField.getText().contains("\u221E") ? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()), false);
+
+        if(x < xPrime && y < yPrime){
+            gc.setStroke(Color.RED);
+            gc.setLineWidth(2);
+            gc.strokeRect(x, y, xPrime - x, yPrime - y);
+            gc.setLineWidth(1);
+            gc.setStroke(Color.BLACK);
+        }else{
+            clearCanvas();
+            MainApplication.getAlert().show();
+        }
     }
 
     private void fillComboBoxItem(){
@@ -152,10 +164,10 @@ public class Controller {
     private void drawSegment(Segment segment) {
         gc.setFill(Color.RED);
         gc.strokeLine(
-                (segment.getX() * ratio) + (canvas.getWidth()/2),
-                (segment.getY() * ratio) + (canvas.getHeight()/2),
-                (segment.getxPrime() * ratio) + (canvas.getWidth()/2),
-                (segment.getyPrime() * ratio) + (canvas.getHeight()/2)
+                applyRatio(segment.getX(), true),
+                applyRatio(segment.getY(), false),
+                applyRatio(segment.getxPrime(), true),
+                applyRatio(segment.getyPrime(), false)
         );
     }
 
