@@ -2,18 +2,21 @@ package controller;
 
 import graphic.MainApplication;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
 import structure.Segment;
 
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -170,5 +173,19 @@ public class Controller {
                 applyRatio(segment.getyPrime(), false)
         );
     }
+
+    public void setOnScroll(ScrollEvent event) {
+        double zoomFactor = 1.05;
+        double deltaY = event.getDeltaY();
+
+        if (deltaY < 0) {
+            zoomFactor = 2.0 - zoomFactor;
+        }
+
+        canvas.setScaleX(canvas.getScaleX() * zoomFactor);
+        canvas.setScaleY(canvas.getScaleY() * zoomFactor);
+
+        event.consume();
+    };
 
 }
