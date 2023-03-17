@@ -2,21 +2,21 @@ package controller;
 
 import graphic.MainApplication;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
 import structure.Segment;
 
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,7 +27,7 @@ import java.util.Collections;
 public class Controller {
 
     @FXML
-    private ComboBox directoryComboBox;
+    private ComboBox<String> directoryComboBox;
     @FXML
     private Canvas canvas;
     @FXML
@@ -38,6 +38,8 @@ public class Controller {
     private TextField yField;
     @FXML
     private TextField yPrimeField;
+    @FXML
+    private ScrollPane scrollPane;
 
     private String path = "src/main/resources/data_test";
     private PrioritySearchTree PST;
@@ -45,12 +47,18 @@ public class Controller {
     private Double ratio;
     private GraphicsContext gc;
 
+    private double canvasX = 0;
+    private double canvasY = 0;
+    private double mouseX = 0;
+    private double mouseY = 0;
+
     @FXML
     public void initialize() throws IOException {
         fillComboBoxItem();
         loadingDataFromFile();
         gc = canvas.getGraphicsContext2D();
         resetCoordinates();
+        setScrollPane();
     }
 
     public void draw(){
@@ -147,11 +155,12 @@ public class Controller {
         File file = new File(path);
         File[] files = file.listFiles();
         ArrayList<String> listFiles = new ArrayList<>();
+        assert files != null;
         for (File f : files) {
             listFiles.add(f.getName());
         }
 
-        Collections.sort(listFiles, Collections.reverseOrder());
+        listFiles.sort(Collections.reverseOrder());
 
         directoryComboBox.getItems().addAll(listFiles);
         directoryComboBox.setValue(listFiles.get(0));
@@ -174,18 +183,45 @@ public class Controller {
         );
     }
 
-    public void setOnScroll(ScrollEvent event) {
-        double zoomFactor = 1.05;
-        double deltaY = event.getDeltaY();
+    private void setScrollPane(){
+        scrollPane.setHmax(canvas.getWidth());
+        scrollPane.setVmax(canvas.getHeight());
+    }
 
-        if (deltaY < 0) {
-            zoomFactor = 2.0 - zoomFactor;
-        }
-
-        canvas.setScaleX(canvas.getScaleX() * zoomFactor);
-        canvas.setScaleY(canvas.getScaleY() * zoomFactor);
-
+    public void setOnScroll(ScrollEvent event){
+        double zoomFactor = event.getDeltaY() > 0 ? 1.1 : 0.9;
+        double currentScale = canvas.getScaleX();
+        double newScale = currentScale * zoomFactor;
+        canvas.setScaleX(newScale);
+        canvas.setScaleY(newScale);
         event.consume();
-    };
+    }
 
+    public void setOnMousePressed(MouseEvent event){
+        scrollPane.setCursor(Cursor.MOVE);
+        scrollPane.setMouseTransparent(true);
+        mouseX = event.getSceneX();
+        mouseY = event.getSceneY();
+        canvasX = canvas.getLayoutX();
+        canvasY = canvas.getLayoutY();
+    }
+
+    public void setOnMouseReleased(){
+        scrollPane.setCursor(Cursor.DEFAULT);
+        scrollPane.setMouseTransparent(false);
+    }
+
+    public void setOnMouseDragged(MouseEvent event){
+        double deltaX = event.getSceneX() - mouseX;
+        double deltaY = event.getSceneY() - mouseY;
+        double newCanvasX = canvasX + deltaX;
+        double newCanvasY = canvasY + deltaY;
+
+        // Update the canvas position
+        canvas.setTranslateX(newCanvasX);
+        canvas.setTranslateY(newCanvasY);
+
+        // Consume the event to prevent other handlers from processing it
+        event.consume();
+    }
 }
