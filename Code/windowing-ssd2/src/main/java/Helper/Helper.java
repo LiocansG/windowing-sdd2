@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
-public class Main {
+public class Helper {
     public static void main(String[] args) {
         Random r = new Random();
         int[] iterations = {10, 100, 1000, 10000, 100000} ;

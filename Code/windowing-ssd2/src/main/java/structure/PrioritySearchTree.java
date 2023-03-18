@@ -1,9 +1,10 @@
 package structure;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.stream.IntStream;
 
+/**
+ * Original Priority Search Tree
+ */
 public class PrioritySearchTree {
 
     private PSTNode root;
@@ -11,15 +12,7 @@ public class PrioritySearchTree {
     public PrioritySearchTree(ArrayList<Segment> segments){
 
         // Sort the segments by their y-coordinate
-        segments.sort(Comparator.comparingDouble(Segment::getMiddleY));
-        root = buildPST(segments);
-    }
-
-    public PrioritySearchTree(String path){
-
-        ArrayList<Segment> segments = creatingSegments(path);
-        // Sort the segments by their y-coordinate
-        segments.sort(Comparator.comparingDouble(Segment::getMiddleY));
+        segments.sort(Segment::compareTo);
         root = buildPST(segments);
     }
 
@@ -86,27 +79,21 @@ public class PrioritySearchTree {
         return root;
     }
 
-    private ArrayList<Segment> creatingSegments(String path) {
-        ArrayList<Segment> segments = new ArrayList<>();
-        try {
-            FileReader fileR = new FileReader(path);
-            BufferedReader br = new BufferedReader(fileR);
-            String line;
-            String[] temp;
-            Double[] tab;
-            br.readLine();
-            while ((line = br.readLine()) != null) {
-                temp = line.split(" ");
-                tab = new Double[4];
-                for (int i = 0; i < 4; i++) {
-                    tab[i] = Double.parseDouble(temp[i]);
-                }
-                segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+    static ArrayList<Segment> opposeArray(ArrayList<Segment> segments) {
+        ArrayList<Segment> opposedSegments = new ArrayList<>();
+        for (int i = 0; i < segments.size(); i++) {
+            opposedSegments.add(segments.get(i).clone());
+            opposedSegments.get(i).oppose();
         }
-        return segments;
+        return opposedSegments;
+    }
 
+    static ArrayList<Segment> exchangeArray(ArrayList<Segment> segments) {
+        ArrayList<Segment> exchangedSegments = new ArrayList<>();
+        for (int i = 0; i < segments.size(); i++) {
+            exchangedSegments.add(segments.get(i).clone());
+            exchangedSegments.get(i).exchange();
+        }
+        return exchangedSegments;
     }
 }

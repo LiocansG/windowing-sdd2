@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Controller {
 
@@ -159,8 +160,6 @@ public class Controller {
         for (File f : files) {
             listFiles.add(f.getName());
         }
-
-        listFiles.sort(Collections.reverseOrder());
 
         directoryComboBox.getItems().addAll(listFiles);
         directoryComboBox.setValue(listFiles.get(0));
