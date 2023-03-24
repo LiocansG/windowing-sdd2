@@ -32,13 +32,7 @@ public class Controller {
     @FXML
     private Canvas canvas;
     @FXML
-    private TextField xField;
-    @FXML
-    private TextField xPrimeField;
-    @FXML
-    private TextField yField;
-    @FXML
-    private TextField yPrimeField;
+    private TextField xField, xPrimeField, yField, yPrimeField;
     @FXML
     private ScrollPane scrollPane;
 
@@ -47,32 +41,19 @@ public class Controller {
     private ArrayList<Double> windowSize;
     private Double ratio;
     private GraphicsContext gc;
-
-    private double canvasX = 0;
-    private double canvasY = 0;
-    private double mouseX = 0;
-    private double mouseY = 0;
-
+    private Segment window;
+    private double canvasX, canvasY, mouseX, mouseY = 0;
     @FXML
     public void initialize() throws IOException {
         fillComboBoxItem();
         loadingDataFromFile();
         gc = canvas.getGraphicsContext2D();
+        window = new Segment(windowSize.get(0), windowSize.get(2), windowSize.get(1), windowSize.get(3));
         resetCoordinates();
         setScrollPane();
     }
 
-    public void draw(){
-        clearCanvas();
-        drawPst(PST.getRoot());
-        drawWindow();
-    }
-
-    public void clearCanvas(){
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-    }
-
+    //----------------------Directory--------------------------//
     public void changeDirectory(){
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File defaultDirectory = new File(path);
@@ -82,6 +63,106 @@ public class Controller {
             path = selectedDirectory.getAbsolutePath();
             fillComboBoxItem();
         }
+    }
+
+    //---------------------Drawing-----------------------------//
+    public void draw(){
+        clearCanvas();
+        drawPst(PST.getRoot());
+        drawWindow();
+    }
+
+    public void clearCanvas(){
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.save();
+    }
+
+    private void drawPst(PSTNode currentNode){
+
+        if(currentNode != null){
+            drawPst(currentNode.getLeftChild());
+            drawSegment(currentNode.getSegment());
+            drawPst(currentNode.getRightChild());
+        }
+    }
+
+
+    //---------------------Window------------------------------//
+    public void resetCoordinates(){
+        xField.setText("-" + '\u221E');
+        xPrimeField.setText("+" + '\u221E');
+        yField.setText("-" + '\u221E');
+        yPrimeField.setText("+" + '\u221E');
+    }
+
+    private void changeWindow(){
+        window.setX(xField.getText().contains("\u221E") ? windowSize.get(0): Double.parseDouble(xField.getText()));
+        window.setY(yField.getText().contains("\u221E") ? windowSize.get(2) : Double.parseDouble(yField.getText()));
+        window.setxPrime(xPrimeField.getText().contains("\u221E") ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()));
+        window.setyPrime(yPrimeField.getText().contains("\u221E") ? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()));
+    }
+
+    private void drawWindow(){
+        changeWindow();
+        gc.setStroke(Color.RED);
+        gc.setLineWidth(2);
+        if(window.getX() < window.getxPrime() && window.getY() < window.getyPrime()){
+            System.out.println(applyRatio(window.getX()));
+            System.out.println(applyRatio(window.getY()));
+            System.out.println(applyRatio(window.getxPrime()) - applyRatio(window.getX()));
+            System.out.println(applyRatio(window.getyPrime()) - applyRatio(window.getY()));
+            gc.setStroke(Color.RED);
+            gc.setLineWidth(2);
+            gc.strokeRect(
+                    applyRatio(window.getX()),
+                    applyRatio(window.getY()),
+                    applyRatio(window.getxPrime()) - applyRatio(window.getX()),
+                    applyRatio(window.getyPrime()) - applyRatio(window.getY())
+            );
+            gc.setLineWidth(1);
+            gc.setStroke(Color.BLACK);
+        }else{
+            clearCanvas();
+            MainApplication.getAlert().show();
+        }
+    }
+
+    //---------------------ComboBox----------------------------//
+    private void fillComboBoxItem(){
+        desactivateEventComboBox();
+        File file = new File(path);
+        File[] files = file.listFiles();
+        ArrayList<String> listFiles = new ArrayList<>();
+        assert files != null;
+        for (File f : files) {
+            listFiles.add(f.getName());
+        }
+
+        directoryComboBox.getItems().addAll(listFiles);
+        directoryComboBox.setValue(listFiles.get(0));
+    }
+
+    private void desactivateEventComboBox(){
+        EventHandler<ActionEvent> handler = directoryComboBox.getOnAction();
+        directoryComboBox.setOnAction(null);
+        directoryComboBox.getItems().removeAll(directoryComboBox.getItems());
+        directoryComboBox.setOnAction(handler);
+    }
+
+    //---------------------Segment----------------------------//
+    private double applyRatio(double value){
+        return (value * ratio) + (canvas.getWidth()/2);
+    }
+
+    private void drawSegment(Segment segment) {
+        gc.setFill(Color.RED);
+        gc.strokeLine(
+                applyRatio(segment.getX()),
+                applyRatio(segment.getY()),
+                applyRatio(segment.getxPrime()),
+                applyRatio(segment.getyPrime())
+        );
     }
 
     public void loadingDataFromFile() throws IOException {
@@ -111,81 +192,11 @@ public class Controller {
         PST = new PrioritySearchTree(segments);
     }
 
-    public void resetCoordinates(){
-        xField.setText("-" + '\u221E');
-        xPrimeField.setText("+" + '\u221E');
-        yField.setText("-" + '\u221E');
-        yPrimeField.setText("+" + '\u221E');
-    }
-
-    private void drawPst(PSTNode currentNode){
-
-        if(currentNode != null){
-            drawPst(currentNode.getLeftChild());
-            drawSegment(currentNode.getSegment());
-            drawPst(currentNode.getRightChild());
-        }
-    }
-
-    private double applyRatio(double value, boolean isX){
-        if(isX)
-            return (value * ratio) + (canvas.getWidth()/2);
-        return (value * ratio) + (canvas.getHeight()/2);
-    }
-
-    private void drawWindow(){
-        double x = applyRatio(xField.getText().contains("\u221E") ? windowSize.get(0): Double.parseDouble(xField.getText()), true);
-        double y = applyRatio(yField.getText().contains("\u221E") ? windowSize.get(2) : Double.parseDouble(yField.getText()), false);
-        double xPrime = applyRatio(xPrimeField.getText().contains("\u221E") ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()), true);
-        double yPrime = applyRatio(yPrimeField.getText().contains("\u221E") ? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()), false);
-
-        if(x < xPrime && y < yPrime){
-            gc.setStroke(Color.RED);
-            gc.setLineWidth(2);
-            gc.strokeRect(x, y, xPrime - x, yPrime - y);
-            gc.setLineWidth(1);
-            gc.setStroke(Color.BLACK);
-        }else{
-            clearCanvas();
-            MainApplication.getAlert().show();
-        }
-    }
-
-    private void fillComboBoxItem(){
-        desactivateEventComboBox();
-        File file = new File(path);
-        File[] files = file.listFiles();
-        ArrayList<String> listFiles = new ArrayList<>();
-        assert files != null;
-        for (File f : files) {
-            listFiles.add(f.getName());
-        }
-
-        directoryComboBox.getItems().addAll(listFiles);
-        directoryComboBox.setValue(listFiles.get(0));
-    }
-
-    private void desactivateEventComboBox(){
-        EventHandler<ActionEvent> handler = directoryComboBox.getOnAction();
-        directoryComboBox.setOnAction(null);
-        directoryComboBox.getItems().removeAll(directoryComboBox.getItems());
-        directoryComboBox.setOnAction(handler);
-    }
-
-    private void drawSegment(Segment segment) {
-        gc.setFill(Color.RED);
-        gc.strokeLine(
-                applyRatio(segment.getX(), true),
-                applyRatio(segment.getY(), false),
-                applyRatio(segment.getxPrime(), true),
-                applyRatio(segment.getyPrime(), false)
-        );
-    }
-
+    //----------------------Canvas Control--------------------//
     private void setScrollPane(){
-        scrollPane.setHmax(canvas.getWidth());
-        scrollPane.setVmax(canvas.getHeight());
-    }
+    scrollPane.setHmax(canvas.getWidth());
+    scrollPane.setVmax(canvas.getHeight());
+}
 
     public void setOnScroll(ScrollEvent event){
         double zoomFactor = event.getDeltaY() > 0 ? 1.1 : 0.9;

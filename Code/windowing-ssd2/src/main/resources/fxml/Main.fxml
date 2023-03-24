@@ -113,9 +113,9 @@
         </VBox>
         <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="576.0" style="-fx-background-color: #CECDCB;">
             <children>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" onScroll="#setOnScroll" pannable="true" pickOnBounds="false" prefHeight="568.0" prefWidth="571.0" vbarPolicy="NEVER" vmax="0.0">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" onScroll="#setOnScroll" pickOnBounds="false" prefHeight="568.0" prefWidth="571.0" vbarPolicy="NEVER" vmax="0.0">
                <content>
-                  <Canvas fx:id="canvas" height="576.0" onMouseDragged="#setOnMouseDragged" width="576.0" />
+                  <Canvas fx:id="canvas" height="576.0" onMouseDragged="#setOnMouseDragged" rotate="-90.0" width="576.0" />
                </content>
             </ScrollPane>
             </children>

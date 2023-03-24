@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/Helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helper/Helper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Segment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PrioritySearchTreeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +49,8 @@
         <option value="module-info" />
         <option value="JavaFXApplication" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -74,7 +75,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-ssd2/Code/windowing-ssd2",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/segments-windowing-master",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
