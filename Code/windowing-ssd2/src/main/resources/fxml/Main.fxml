@@ -29,7 +29,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="68.0" onAction="#loadingDataFromFile" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
+                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="68.0" onAction="#loadingSegmentFromFile" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
                </children>
             </Pane>
             <Separator prefWidth="200.0" />

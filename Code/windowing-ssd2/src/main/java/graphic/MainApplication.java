@@ -25,7 +25,6 @@ public class MainApplication extends Application {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("X & Y need to be greater than X' and Y' ");
         primaryStage.setTitle("Windowing Project");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

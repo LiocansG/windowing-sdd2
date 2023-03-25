@@ -1,10 +1,10 @@
-package helper;
+package utilities;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
-public class Helper {
+public class SegmentCreator {
     public static void main(String[] args) {
         Random r = new Random();
         int[] iterations = {10, 100, 1000, 10000, 100000} ;

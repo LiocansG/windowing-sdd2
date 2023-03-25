@@ -6,12 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helper/Helper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/SegmentCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Heap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Heap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeOE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeOE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Segment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/structure/PrioritySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structure/UtilityTest1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/structure/SegmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structure/UtiltyTest2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,20 +75,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/segments-windowing-master",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utilisateur/Desktop/segments-windowing-master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utilisateur\Desktop\windowing-ssd2\Code\windowing-ssd2\src\main\resources\data_test" />
@@ -102,13 +109,29 @@
       <command value="gradle run" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMain">
-    <configuration name="TestMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestMain" />
-      <module name="windowing-ssd2.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Gradle.HeapTest">
+    <configuration name="HeapTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;structure.HeapTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="PrioritySearchTreeTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -156,29 +179,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PrioritySearchTreeTest.checkTree" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;PrioritySearchTreeTest.checkTree&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="SegmentTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -202,13 +202,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Tests in 'structure'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;structure.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeapTest" />
+        <item itemvalue="Gradle.Tests in 'structure'" />
         <item itemvalue="Gradle.PrioritySearchTreeTest (1)" />
         <item itemvalue="Gradle.SegmentTest" />
         <item itemvalue="Gradle.PrioritySearchTreeTest" />
-        <item itemvalue="Application.TestMain" />
-        <item itemvalue="Gradle.PrioritySearchTreeTest.checkTree" />
       </list>
     </recent_temporary>
   </component>

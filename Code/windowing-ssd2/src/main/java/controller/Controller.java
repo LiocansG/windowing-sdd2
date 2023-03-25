@@ -16,14 +16,13 @@ import javafx.stage.DirectoryChooser;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
 import structure.Segment;
+import utilities.AlertDisplay;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Controller {
 
@@ -46,11 +45,10 @@ public class Controller {
     @FXML
     public void initialize() throws IOException {
         fillComboBoxItem();
-        loadingDataFromFile();
+        loadingSegmentFromFile();
         gc = canvas.getGraphicsContext2D();
         window = new Segment(windowSize.get(0), windowSize.get(2), windowSize.get(1), windowSize.get(3));
         resetCoordinates();
-        setScrollPane();
     }
 
     //----------------------Directory--------------------------//
@@ -65,17 +63,23 @@ public class Controller {
         }
     }
 
-    //---------------------Drawing-----------------------------//
-    public void draw(){
-        clearCanvas();
-        drawPst(PST.getRoot());
-        drawWindow();
-    }
 
+    //---------------------Drawing-----------------------------//
     public void clearCanvas(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
+    }
+
+    public void draw(){
+        clearCanvas();
+        resetZoomAndPosition();
+        if(isWindowGood()){
+            drawPst(PST.getRoot());
+            drawWindow();
+        }else{
+            AlertDisplay.alertDisplay(MainApplication.getAlert());
+        }
     }
 
     private void drawPst(PSTNode currentNode){
@@ -97,36 +101,32 @@ public class Controller {
     }
 
     private void changeWindow(){
-        window.setX(xField.getText().contains("\u221E") ? windowSize.get(0): Double.parseDouble(xField.getText()));
-        window.setY(yField.getText().contains("\u221E") ? windowSize.get(2) : Double.parseDouble(yField.getText()));
-        window.setxPrime(xPrimeField.getText().contains("\u221E") ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()));
-        window.setyPrime(yPrimeField.getText().contains("\u221E") ? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()));
+        window.setX((xField.getText().contains("\u221E") || Double.parseDouble(xField.getText()) < windowSize.get(0)) ? windowSize.get(0): Double.parseDouble(xField.getText()));
+        window.setY((yField.getText().contains("\u221E") || Double.parseDouble(yField.getText()) < windowSize.get(2)) ? windowSize.get(2) : Double.parseDouble(yField.getText()));
+        window.setxPrime((xPrimeField.getText().contains("\u221E") || Double.parseDouble(xPrimeField.getText()) > windowSize.get(1)) ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()));
+        window.setyPrime((yPrimeField.getText().contains("\u221E") || Double.parseDouble(yPrimeField.getText()) > windowSize.get(3))? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()));
     }
 
     private void drawWindow(){
         changeWindow();
         gc.setStroke(Color.RED);
         gc.setLineWidth(2);
-        if(window.getX() < window.getxPrime() && window.getY() < window.getyPrime()){
-            System.out.println(applyRatio(window.getX()));
-            System.out.println(applyRatio(window.getY()));
-            System.out.println(applyRatio(window.getxPrime()) - applyRatio(window.getX()));
-            System.out.println(applyRatio(window.getyPrime()) - applyRatio(window.getY()));
-            gc.setStroke(Color.RED);
-            gc.setLineWidth(2);
-            gc.strokeRect(
-                    applyRatio(window.getX()),
-                    applyRatio(window.getY()),
-                    applyRatio(window.getxPrime()) - applyRatio(window.getX()),
-                    applyRatio(window.getyPrime()) - applyRatio(window.getY())
-            );
-            gc.setLineWidth(1);
-            gc.setStroke(Color.BLACK);
-        }else{
-            clearCanvas();
-            MainApplication.getAlert().show();
-        }
+        gc.setStroke(Color.RED);
+        gc.setLineWidth(2);
+        gc.strokeRect(
+                applyRatio(window.getX()),
+                applyRatio(window.getY()),
+                applyRatio(window.getxPrime()) - applyRatio(window.getX()),
+                applyRatio(window.getyPrime()) - applyRatio(window.getY())
+        );
+        gc.setLineWidth(1);
+        gc.setStroke(Color.BLACK);
     }
+
+    private boolean isWindowGood(){
+        return(window.getX() < window.getxPrime() && window.getY() < window.getyPrime());
+    }
+
 
     //---------------------ComboBox----------------------------//
     private void fillComboBoxItem(){
@@ -150,6 +150,7 @@ public class Controller {
         directoryComboBox.setOnAction(handler);
     }
 
+
     //---------------------Segment----------------------------//
     private double applyRatio(double value){
         return (value * ratio) + (canvas.getWidth()/2);
@@ -165,7 +166,7 @@ public class Controller {
         );
     }
 
-    public void loadingDataFromFile() throws IOException {
+    public void loadingSegmentFromFile() throws IOException {
         windowSize = new ArrayList<>();
         FileReader fileR = new FileReader(path + "/" + directoryComboBox.getValue());
         BufferedReader br = new BufferedReader(fileR);
@@ -192,11 +193,18 @@ public class Controller {
         PST = new PrioritySearchTree(segments);
     }
 
+
     //----------------------Canvas Control--------------------//
-    private void setScrollPane(){
-    scrollPane.setHmax(canvas.getWidth());
-    scrollPane.setVmax(canvas.getHeight());
-}
+    private void resetZoomAndPosition(){
+        // Reset canvas position
+        canvas.setTranslateX(0);
+        canvas.setTranslateY(0);
+
+        // Reset zoom
+        canvas.setScaleX(1);
+        canvas.setScaleY(1);
+        canvas.setTranslateZ(0);
+    }
 
     public void setOnScroll(ScrollEvent event){
         double zoomFactor = event.getDeltaY() > 0 ? 1.1 : 0.9;
@@ -204,7 +212,6 @@ public class Controller {
         double newScale = currentScale * zoomFactor;
         canvas.setScaleX(newScale);
         canvas.setScaleY(newScale);
-        event.consume();
     }
 
     public void setOnMousePressed(MouseEvent event){
@@ -230,8 +237,5 @@ public class Controller {
         // Update the canvas position
         canvas.setTranslateX(newCanvasX);
         canvas.setTranslateY(newCanvasY);
-
-        // Consume the event to prevent other handlers from processing it
-        event.consume();
     }
 }

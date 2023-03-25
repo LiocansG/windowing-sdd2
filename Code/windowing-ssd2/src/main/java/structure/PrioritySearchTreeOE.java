@@ -1,5 +1,7 @@
 package structure;
 
+import utilities.Utility;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 public class PrioritySearchTreeOE extends PrioritySearchTree{
 
     public PrioritySearchTreeOE(ArrayList<Segment> segments) {
-        super(opposeArray(exchangeArray(segments)));
+        super(Utility.opposeArray(Utility.exchangeArray(segments)));
     }
 
 }
