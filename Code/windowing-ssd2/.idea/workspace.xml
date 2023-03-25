@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/SegmentCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/Heap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Heap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeOE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeOE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Segment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structure/PrioritySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structure/UtilityTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structure/SegmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structure/UtiltyTest2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/structure/HeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structure/HeapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

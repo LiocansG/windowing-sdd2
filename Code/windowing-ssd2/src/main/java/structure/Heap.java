@@ -10,6 +10,14 @@ public abstract class Heap {
         for(int i = size / 2 - 1; i >= 0; i--){
             heapify(segments, i, size);
         }
+
+        // Extract elements from the heap in decreasing order and store them back in the array list
+        for (int i = size - 1; i > 0; i--) {
+            Segment temp = segments.get(0);
+            segments.set(0, segments.get(i));
+            segments.set(i, temp);
+            heapify(segments, 0, i);
+        }
     }
 
     public static void heapify(ArrayList<Segment> segments, int index, int size) {
@@ -32,15 +40,6 @@ public abstract class Heap {
             segments.set(index, segments.get(largest));
             segments.set(largest, temp);
             heapify(segments, largest, size);
-        }
-
-        // Recursively heapify the left and right subtrees
-        if (left < size) {
-            heapify(segments, left, size);
-        }
-
-        if (right < size) {
-            heapify(segments, right, size);
         }
     }
 }

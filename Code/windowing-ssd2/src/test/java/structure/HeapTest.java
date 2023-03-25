@@ -38,7 +38,7 @@ public class HeapTest {
         for (int i = 1; i < segments.size(); i++) {
             if (segments.get(i).getY() < segments.get(i - 1).getY()) {
                 arraySorted = false;
-                return;
+                break;
             }
         }
         assertEquals(true, arraySorted);
