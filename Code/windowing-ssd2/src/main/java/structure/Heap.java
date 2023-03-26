@@ -7,7 +7,7 @@ public abstract class Heap {
 
     public static void heapify(ArrayList<Segment> segments){
         int size = segments.size();
-        for(int i = size / 2 - 1; i >= 0; i--){
+        for(int i = (size / 2) - 1; i >= 0; i--){
             heapify(segments, i, size);
         }
 
