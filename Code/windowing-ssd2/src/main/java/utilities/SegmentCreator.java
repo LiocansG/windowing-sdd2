@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
-public class SegmentCreator {
+public abstract class SegmentCreator {
     public static void main(String[] args) {
         Random r = new Random();
         int[] iterations = {10, 100, 1000, 10000, 100000} ;
@@ -19,8 +19,8 @@ public class SegmentCreator {
         try(FileWriter fw = new FileWriter(path)){
             fw.write("-"+ bound + " " + bound + " -" + bound + " " + bound +"\n");
             for(int i = 0; i < iterations; i++){
-                int[] segment = segmentRandomCreation(bound);
-                for (int coord: segment) {
+                double[] segment = segmentRandomCreation(bound);
+                for (double coord: segment) {
                     fw.write(coord +" ");
                 }
                 fw.write("\n");
@@ -30,8 +30,8 @@ public class SegmentCreator {
         }
     }
 
-    private static int[] segmentRandomCreation(int bound){
-        int[] segment;
+    public static double[] segmentRandomCreation(int bound){
+        double[] segment;
         Random rnd = new Random();
 
         int x, y, x_prime, y_prime;
@@ -48,7 +48,7 @@ public class SegmentCreator {
             y = rnd.nextInt(2) == 0 ? rnd.nextInt(bound) : - rnd.nextInt(bound);
             y_prime = y;
         }
-        segment = new int[]{x, y, x_prime, y_prime};
+        segment = new double[]{x, x_prime, y, y_prime};
         return segment;
     }
 }

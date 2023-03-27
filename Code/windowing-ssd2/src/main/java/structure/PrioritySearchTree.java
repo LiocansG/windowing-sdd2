@@ -12,7 +12,7 @@ public class PrioritySearchTree {
     public PrioritySearchTree(ArrayList<Segment> segments){
 
         // Sort the segments by their y-coordinate
-        segments.sort(Segment::compareTo);
+        Heap.heapify(segments);
         root = buildPST(segments);
     }
 

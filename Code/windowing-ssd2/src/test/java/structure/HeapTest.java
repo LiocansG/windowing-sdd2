@@ -2,10 +2,10 @@ package structure;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import utilities.SegmentCreator;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Set;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,24 +14,18 @@ public class HeapTest {
     private static ArrayList<Segment> segments;
     @BeforeAll
     public static void setUp(){
-        Segment segment1 = new Segment(1,2,3,4);
-        Segment segment2 = new Segment(2,3,4,5);
-        Segment segment3 = new Segment(3,4,5,6);
-        Segment segment4 = new Segment(4,5,6,7);
-        Segment segment5 = new Segment(5,6,7,8);
         segments = new ArrayList<>();
-        segments.add(segment1);
-        segments.add(segment2);
-        segments.add(segment3);
-        segments.add(segment4);
-        segments.add(segment5);
-        Collections.shuffle(segments);
+        double [] values;
+        Random rand = new Random();
+        for (int i = 0; i < 100; i++) {
+            values = SegmentCreator.segmentRandomCreation(10000);
+            segments.add(new Segment(values[0],values[2], values[1], values[3]));
+        }
     }
 
     @Test
     public void heapify(){
         Boolean arraySorted = true;
-        System.out.println(segments);
         Heap.heapify(segments);
         System.out.println(segments);
         // Check if the segments are sorted in non-decreasing order of their Y-coordinates

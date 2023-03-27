@@ -1,6 +1,6 @@
 package structure;
 
-public class Segment implements Comparable<Segment> {
+public class Segment{
 
     private double x;
     private double y;
@@ -51,11 +51,6 @@ public class Segment implements Comparable<Segment> {
 
     public void setyPrime(double yPrime) {
         this.yPrime = yPrime;
-    }
-
-    public int compareTo(Segment o) {
-        double c = Double.compare(y, o.getY());
-        return (int) (c == 0 ? Double.compare(yPrime, o.getyPrime()) : c);
     }
 
     public Segment clone() {
