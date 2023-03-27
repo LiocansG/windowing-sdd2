@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import structure.PSTNode;
 import structure.PrioritySearchTree;
+import structure.PstWrapper;
 import structure.Segment;
 import utilities.AlertDisplay;
 
@@ -36,7 +37,7 @@ public class Controller {
     private ScrollPane scrollPane;
 
     private String path = "src/main/resources/data_test";
-    private PrioritySearchTree PST;
+    private PstWrapper pstWrapper;
     private ArrayList<Double> windowSize;
     private Double ratio;
     private GraphicsContext gc;
@@ -75,19 +76,12 @@ public class Controller {
         clearCanvas();
         resetZoomAndPosition();
         if(isWindowGood()){
-            drawPst(PST.getRoot());
             drawWindow();
+            for (Segment segment : pstWrapper.getWindow(window, windowSize)) {
+                drawSegment(segment);
+            }
         }else{
             AlertDisplay.alertDisplay(MainApplication.getAlert());
-        }
-    }
-
-    private void drawPst(PSTNode currentNode){
-
-        if(currentNode != null){
-            drawPst(currentNode.getLeftChild());
-            drawSegment(currentNode.getSegment());
-            drawPst(currentNode.getRightChild());
         }
     }
 
@@ -176,6 +170,7 @@ public class Controller {
         ArrayList<Segment> segments = new ArrayList<>();
         line = br.readLine();
         temp = line.split(" ");
+
         for (int i = 0; i < 4; i++) {
             windowSize.add(Double.parseDouble(temp[i]));
         }
@@ -190,7 +185,7 @@ public class Controller {
             }
             segments.add(new Segment(tab[0], tab[1], tab[2], tab[3]));
         }
-        PST = new PrioritySearchTree(segments);
+        pstWrapper = new PstWrapper(segments);
     }
 
 
