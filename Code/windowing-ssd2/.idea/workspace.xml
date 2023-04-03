@@ -5,32 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PSTNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeE.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeOE.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/Segment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Heap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/Heap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PSTNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PrioritySearchTreeOE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PstWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Segment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/AlertDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/AlertDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/SegmentCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/SegmentCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Utility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structure/HeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/structureTest/HeapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structure/UtilityTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/utilitiesTest/UtilityTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structure/UtiltyTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/utilitiesTest/UtiltyTest2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PstWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +72,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/Projet-de-Genie-Logiciel/Code/PPE",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/segments-windowing-master",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">

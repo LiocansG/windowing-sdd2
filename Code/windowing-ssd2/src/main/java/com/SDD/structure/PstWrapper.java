@@ -41,27 +41,28 @@ public class PstWrapper {
 
         //[X, Y] x [+∞, Y']
         if(window.getxPrime() == windowSize.get(1)) {
-            // oppose coordinates to be able to use efficient windowing
+
             ArrayList<Segment> segments = opposed.windowing(Utility.oppose(window));
-            // recover coordinates to original state
             return Utility.opposeArray(segments);
         }
 
         //[X, -∞] x [X', Y']
         if(window.getY() == windowSize.get(2)) {
-            // exchange coordinates to be able to use efficient windowing
+
             ArrayList<Segment> segments = exchanged.windowing(Utility.exchange(window));
-            // recover coordinates to original state
             return Utility.exchangeArray(segments);
         }
 
         //[X, Y] x [X', +∞]
         if(window.getyPrime() == windowSize.get(3)) {
-            // oppose and exchange coordinates to be able to use efficient windowing
+
             ArrayList<Segment> segments = opposed_exchanged.windowing(Utility.oppose(Utility.exchange(window)));
-            // recover coordinates to original state
             return  Utility.opposeArray(Utility.exchangeArray(segments));
         }
-        return null;
+
+        //[X, Y] x [X', Y']
+        ArrayList<Segment> segments = original.windowing(window);
+        segments.addAll( Utility.exchangeArray(exchanged.windowing(Utility.exchange(window))));
+        return segments;
     }
 }
