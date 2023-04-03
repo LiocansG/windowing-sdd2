@@ -62,7 +62,7 @@ public class PstWrapper {
 
         //[X, Y] x [X', Y']
         ArrayList<Segment> segments = original.windowing(window);
-        segments.addAll( Utility.exchangeArray(exchanged.windowing(Utility.exchange(window))));
+        segments.addAll(Utility.exchangeArray(exchanged.windowing(Utility.exchange(window))));
         return segments;
     }
 }
