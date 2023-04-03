@@ -13,6 +13,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import com.SDD.structure.PstWrapper;
 import com.SDD.structure.Segment;
@@ -38,6 +39,8 @@ public class Controller {
     private TextField xField, xPrimeField, yField, yPrimeField;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Text numberSegment;
 
     private String path = "src/main/resources/data_test";
     private PstWrapper pstWrapper;
@@ -46,6 +49,7 @@ public class Controller {
     private GraphicsContext gc;
     private Segment window;
     private double canvasX, canvasY, mouseX, mouseY = 0;
+    private ArrayList<Segment> segments;
 
     /**
      * Initializes the Controller instance by setting up the user interface and loading the
@@ -55,9 +59,9 @@ public class Controller {
      */
     @FXML
     public void initialize() throws IOException {
+        canvasInit();
         fillComboBoxItem();
         loadingSegmentFromFile();
-        gc = canvas.getGraphicsContext2D();
         window = new Segment(windowSize.get(0), windowSize.get(2), windowSize.get(1), windowSize.get(3));
         resetCoordinates();
     }
@@ -89,7 +93,6 @@ public class Controller {
     public void clearCanvas(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        gc.save();
     }
 
     /**
@@ -99,16 +102,13 @@ public class Controller {
     public void draw(){
         clearCanvas();
         resetZoomAndPosition();
+        changeWindow();
         if(isWindowGood()){
             drawWindow();
-            for (Segment segment : pstWrapper.getWindow(window, windowSize)) {
-                drawSegment(segment);
-            }
-        }else{
-            AlertDisplay.alertDisplay(MainApplication.getAlert());
+            drawSegments();
+            numberSegment.setText("Number of segment: " + segments.size());
         }
     }
-
 
     //---------------------Window------------------------------//
 
@@ -137,9 +137,6 @@ public class Controller {
      * Draws the window on the canvas using a red color and a 2-pixel wide stroke.
      */
     private void drawWindow(){
-        changeWindow();
-        gc.setStroke(Color.RED);
-        gc.setLineWidth(2);
         gc.setStroke(Color.RED);
         gc.setLineWidth(2);
         gc.strokeRect(
@@ -148,7 +145,6 @@ public class Controller {
                 applyRatio(window.getxPrime()) - applyRatio(window.getX()),
                 applyRatio(window.getyPrime()) - applyRatio(window.getY())
         );
-        gc.setLineWidth(1);
         gc.setStroke(Color.BLACK);
     }
 
@@ -159,7 +155,25 @@ public class Controller {
      * @return true if the window segment is valid, false otherwise.
      */
     private boolean isWindowGood(){
-        return(window.getX() < window.getxPrime() && window.getY() < window.getyPrime());
+        boolean isGood = true;
+        if(window.getX() > window.getxPrime() || window.getY() > window.getyPrime()){
+            AlertDisplay.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be greater than (X', Y')");
+            isGood = false;
+        } else if (!((window.getX() == windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() == windowSize.get(3))
+                ||(window.getX() == windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
+                ||(window.getX() != windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
+                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() != windowSize.get(3))
+                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() == windowSize.get(3))
+                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3)))){
+            AlertDisplay.alertDisplay(MainApplication.getAlert(), "We are only covering the following: \n" +
+                    "\t -[X, X'] x [Y, Y']\n" +
+                    "\t -[-\u221e, X'] x [Y, Y']\n" +
+                    "\t -[X, +\u221e] x [Y, Y']\n" +
+                    "\t -[X, X'] x [-\u221e, Y']\n" +
+                    "\t -[X, X'] x [Y, +\u221e]");
+            isGood = false;
+        }
+        return isGood;
     }
 
 
@@ -207,18 +221,29 @@ public class Controller {
     }
 
     /**
-     * Draws the given segment on the canvas using a red stroke.
+     * Draws the given segment on the canvas.
      *
      * @param segment the segment to draw
      */
     private void drawSegment(Segment segment) {
-        gc.setFill(Color.RED);
         gc.strokeLine(
                 applyRatio(segment.getX()),
                 applyRatio(segment.getY()),
                 applyRatio(segment.getxPrime()),
                 applyRatio(segment.getyPrime())
         );
+    }
+
+    /**
+     * Draws all the segment on the canvas.
+     */
+    public void drawSegments(){
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(1);
+        segments = pstWrapper.getWindow(window, windowSize);
+        for (Segment segment : segments) {
+            drawSegment(segment);
+        }
     }
 
     /**
@@ -254,6 +279,12 @@ public class Controller {
         pstWrapper = new PstWrapper(segments);
     }
 
+    //--------------------------Canvas-------------------------//
+    private void canvasInit(){
+        gc = canvas.getGraphicsContext2D();
+        gc.scale(1, -1);
+        gc.translate(0, -canvas.getHeight());
+    }
 
     //----------------------Canvas Control--------------------//
 
@@ -282,6 +313,9 @@ public class Controller {
         double newScale = currentScale * zoomFactor;
         canvas.setScaleX(newScale);
         canvas.setScaleY(newScale);
+        clearCanvas();
+        drawWindow();
+        drawSegments();
     }
 
     /**

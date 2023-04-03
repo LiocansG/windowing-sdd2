@@ -12,8 +12,8 @@ public abstract class AlertDisplay {
      *
      * @param alert The Alert object to display.
      */
-    public static void alertDisplay(Alert alert){
-        alert.setContentText("The first point (X, Y) must be greater than (X', Y')");
+    public static void alertDisplay(Alert alert, String text){
+        alert.setContentText(text);
         alert.show();
     }
 }

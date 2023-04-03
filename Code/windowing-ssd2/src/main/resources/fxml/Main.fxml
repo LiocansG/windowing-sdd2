@@ -14,12 +14,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SDD.controller.Controller">
     <children>
         <VBox alignment="CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-            <Pane prefHeight="192.0" prefWidth="256.0">
+            <Pane prefHeight="182.0" prefWidth="256.0">
                <children>
                   <Button fx:id="btnChangeDirectory" alignment="CENTER" mnemonicParsing="false" onAction="#changeDirectory" prefHeight="65.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Change Directory" textFill="#e7e5e5">
                      <opaqueInsets>
@@ -29,13 +30,13 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="68.0" onAction="#loadingSegmentFromFile" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
+                  <ComboBox fx:id="directoryComboBox" layoutX="35.0" layoutY="70.0" onAction="#loadingSegmentFromFile" prefHeight="31.0" prefWidth="186.0" stylesheets="@../css/style.css" visibleRowCount="5" />
                </children>
             </Pane>
             <Separator prefWidth="200.0" />
             <Pane prefHeight="102.0" prefWidth="256.0">
                <children>
-                  <Button fx:id="btnResetCoordinate" layoutY="-1.0" mnemonicParsing="false" onAction="#resetCoordinates" prefHeight="31.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Reset Coordinate">
+                  <Button fx:id="btnResetCoordinate" layoutY="-1.0" mnemonicParsing="false" onAction="#resetCoordinates" prefHeight="27.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Reset Coordinate">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -90,9 +91,9 @@
                </children>
             </Pane>
             <Separator prefWidth="200.0" />
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="188.0" prefWidth="256.0">
                <children>
-                      <Button fx:id="btnLoad" alignment="CENTER" graphicTextGap="22.0" layoutY="-1.0" mnemonicParsing="false" onAction="#draw" prefHeight="140.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Load Data">
+                      <Button fx:id="btnLoad" alignment="CENTER" graphicTextGap="22.0" layoutY="-1.0" mnemonicParsing="false" onAction="#draw" prefHeight="122.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Load Data">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -100,22 +101,32 @@
                </children>
             </Pane>
             <Separator prefWidth="200.0" />
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="188.0" prefWidth="256.0">
                <children>
-                      <Button fx:id="btnClear" alignment="BASELINE_CENTER" layoutY="-1.0" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="140.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Clear Canvas">
+                      <Button fx:id="btnClear" alignment="BASELINE_CENTER" layoutY="-1.0" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="122.0" prefWidth="256.0" stylesheets="@../css/style.css" text="Clear Canvas">
                      <font>
                         <Font size="24.0" />
                      </font>
                       </Button>
                </children>
             </Pane>
+            <Separator prefWidth="200.0" />
+            <Pane prefHeight="100.0" prefWidth="256.0">
+               <children>
+                  <Text fx:id="numberSegment" fill="WHITE" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Segment : 0" textAlignment="CENTER" wrappingWidth="256.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
             </children>
         </VBox>
-        <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="576.0" style="-fx-background-color: #CECDCB;">
+        <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="576.0">
             <children>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" onScroll="#setOnScroll" pickOnBounds="false" prefHeight="568.0" prefWidth="571.0" vbarPolicy="NEVER" vmax="0.0">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" onScroll="#setOnScroll" pickOnBounds="false" prefHeight="568.0" prefWidth="571.0" style="-fx-background-color: #ff0000;" vbarPolicy="NEVER" vmax="0.0">
                <content>
-                  <Canvas fx:id="canvas" height="576.0" onMouseDragged="#setOnMouseDragged" rotate="-90.0" width="576.0" />
+                  <Canvas fx:id="canvas" height="576.0" onMouseDragged="#setOnMouseDragged" width="576.0" />
                </content>
             </ScrollPane>
             </children>
