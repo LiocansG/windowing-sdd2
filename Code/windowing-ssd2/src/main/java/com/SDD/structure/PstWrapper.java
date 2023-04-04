@@ -8,10 +8,10 @@ import java.util.ArrayList;
  * Wrapper class for Priority Search Trees that provides efficient windowing for specific types of windows.
  */
 public class PstWrapper {
-    private PrioritySearchTree original;
-    private PrioritySearchTreeO opposed;
-    private PrioritySearchTreeE exchanged;
-    private PrioritySearchTreeOE opposedExchanged;
+    private final PrioritySearchTree original;
+    private final PrioritySearchTreeO opposed;
+    private final PrioritySearchTreeE exchanged;
+    private final PrioritySearchTreeOE opposedExchanged;
 
     /**
      * Constructs a PstWrapper with the given list of segments, which initializes several Priority Search Trees with different segment orders to provide efficient windowing for specific types of windows.

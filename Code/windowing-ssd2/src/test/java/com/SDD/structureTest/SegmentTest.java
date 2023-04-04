@@ -32,8 +32,9 @@ public class SegmentTest {
     public void isSegmentGood(){
         boolean isGood = true;
         for (Segment segment : segments) {
-            if (isGood && segment.getX() > segment.getxPrime() && segment.getY() > segment.getyPrime()){
+            if (isGood && segment.getX() > segment.getxPrime() && segment.getY() > segment.getyPrime()) {
                 isGood = false;
+                break;
             }
         }
         assertTrue(isGood);

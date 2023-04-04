@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PSTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PSTNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeOE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeOE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PstWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PstWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/AlertDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utility/Alert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/SegmentCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utility/SegmentCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/utility/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/SDD/structureTest/HeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/structureTest/HeapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/SDD/utilitiesTest/UtilityTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/utilityTest/UtilityTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/SDD/utilitiesTest/UtiltyTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/utilityTest/UtiltyTest2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/SDD/structureTest/SegmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SDD/structureTest/SegmentTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +77,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/segments-windowing-master",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/windowing-ssd2/Code/windowing-ssd2/src/main/resources/uml",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -214,8 +209,8 @@
       <list>
         <item itemvalue="Gradle.SegmentTest" />
         <item itemvalue="Gradle.PrioritySearchTreeTest" />
-        <item itemvalue="Gradle.HeapTest (1)" />
         <item itemvalue="Gradle.HeapTest" />
+        <item itemvalue="Gradle.HeapTest (1)" />
         <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>

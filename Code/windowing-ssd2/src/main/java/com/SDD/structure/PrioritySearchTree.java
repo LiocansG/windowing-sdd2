@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class PrioritySearchTree {
 
-    private PSTNode root;
+    private final PSTNode root;
 
     /**
      * Builds a Priority Search Tree using a list of segments.

@@ -39,7 +39,7 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        this.stage = primaryStage;
+        stage = primaryStage;
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         alert = new Alert(Alert.AlertType.ERROR);

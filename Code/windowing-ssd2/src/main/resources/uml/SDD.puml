@@ -1,0 +1,159 @@
+@startuml
+class TestMain {
++ {static} void main(String[])
+}
+
+class PrioritySearchTreeOE {
+}
+
+class PrioritySearchTreeO {
+}
+
+abstract class Alert {
++ {static} void alertDisplay(javafx.scene.control.Alert,String)
+}
+
+class PrioritySearchTreeE {
+}
+
+class SegmentCreator {
++ {static} void main(String[])
+- {static} void writeSegmentsFile(int,int)
++ {static} double[] segmentRandomCreation(int)
+}
+
+class PstWrapper {
+- PrioritySearchTree original
+- PrioritySearchTreeO opposed
+- PrioritySearchTreeE exchanged
+- PrioritySearchTreeOE opposedExchanged
++ ArrayList<Segment> getWindow(Segment,ArrayList<Double>)
++ PrioritySearchTree getOriginal()
++ PrioritySearchTreeO getOpposed()
++ PrioritySearchTreeE getExchanged()
++ PrioritySearchTreeOE getOpposedExchanged()
+}
+
+abstract class Utility {
++ {static} ArrayList<Segment> opposeArray(ArrayList<Segment>)
++ {static} ArrayList<Segment> exchangeArray(ArrayList<Segment>)
++ {static} Segment oppose(Segment)
++ {static} Segment exchange(Segment)
+}
+
+class PSTNode {
+- Segment segment
+- int median
+- PSTNode leftChild
+- PSTNode rightChild
++ Segment getSegment()
++ int getMedian()
++ int getSpecialMedian(Boolean)
++ void setMedian(int)
++ PSTNode getLeftChild()
++ void setLeftChild(PSTNode)
++ PSTNode getRightChild()
++ void setRightChild(PSTNode)
++ boolean isLeaf()
+}
+
+class Segment {
+- double x
+- double y
+- double xPrime
+- double yPrime
++ double getX()
++ void setX(double)
++ double getY()
++ void setY(double)
++ double getxPrime()
++ void setxPrime(double)
++ double getyPrime()
++ void setyPrime(double)
++ Segment clone()
++ String toString()
+}
+
+class Controller {
+- ComboBox<String> directoryComboBox
+- Canvas canvas
+- TextField xField
+- ScrollPane scrollPane
+- Text numberSegment
+- String path
+- PstWrapper pstWrapper
+- ArrayList<Double> windowSize
+- Double ratio
+- GraphicsContext gc
+- Segment window
+- double canvasX
+- ArrayList<Segment> segments
++ void initialize()
++ void changeDirectory()
++ void clearCanvas()
++ void draw()
++ void resetCoordinates()
+- void changeWindow()
+- void drawWindow()
+- boolean isWindowGood()
+- void fillComboBoxItem()
+- void desactivateEventComboBox()
+- double applyRatio(double)
+- void drawSegment(Segment)
++ void drawSegments()
++ void loadingSegmentFromFile()
+- void canvasInit()
+- void resetZoomAndPosition()
++ void setOnScroll(ScrollEvent)
++ void setOnMousePressed(MouseEvent)
++ void setOnMouseReleased()
++ void setOnMouseDragged(MouseEvent)
+}
+
+class MainApplication {
+- {static} Stage stage
+- {static} Alert alert
++ {static} void main(String[])
++ void start(Stage)
++ {static} Stage getStage()
++ {static} Alert getAlert()
+}
+
+abstract class Heap {
++ {static} void heapify(ArrayList<Segment>)
++ {static} void heapify(ArrayList<Segment>,int,int)
+}
+
+class PrioritySearchTree {
+- PSTNode root
+- PSTNode buildPST(ArrayList<Segment>)
+- Segment findRoot(ArrayList<Segment>)
++ PSTNode getRoot()
++ ArrayList<Segment> getAllSegments()
+- ArrayList<Segment> getAllSegments(PSTNode)
++ ArrayList<Segment> windowing(Segment)
+- void windowing(PSTNode,Segment,ArrayList<Segment>)
+- boolean checkIn(Segment,Segment)
+- boolean checkCrossBottom(Segment,Segment)
+- boolean checkCrossLeft(Segment,Segment)
+}
+
+
+PrioritySearchTree <|-- PrioritySearchTreeOE
+PrioritySearchTree <|-- PrioritySearchTreeO
+PrioritySearchTree <|-- PrioritySearchTreeE
+PSTNode --* PrioritySearchTree
+PSTNode *-- PSTNode : leftChild
+PSTNode --* PSTNode : rightChild
+PSTNode *-- Segment
+Application <|-- MainApplication
+PrioritySearchTree --* PstWrapper
+PrioritySearchTreeOE --* PstWrapper
+PrioritySearchTreeO --* PstWrapper
+PrioritySearchTreeE --* PstWrapper
+Segment -  Utility : Use <
+TestMain - MainApplication : Call >
+PrioritySearchTree - Heap : Use >
+Controller - Alert : Use >
+Segment --* Controller
+@enduml

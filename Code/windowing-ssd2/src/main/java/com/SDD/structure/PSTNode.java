@@ -6,7 +6,7 @@ package com.SDD.structure;
  */
 
 public class PSTNode {
-    private Segment segment;
+    private final Segment segment;
     private int median;
     private PSTNode leftChild;
     private PSTNode rightChild;
