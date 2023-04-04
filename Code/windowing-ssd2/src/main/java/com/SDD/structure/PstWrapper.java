@@ -96,7 +96,7 @@ public class PstWrapper {
     }
 
     /**
-     * Return the Opposed & Exchanged PST
+     * Return the Opposed and Exchanged PST
      *
      * @return Return the Original PST
      */

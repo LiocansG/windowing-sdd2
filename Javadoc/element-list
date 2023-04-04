@@ -1,7 +1,7 @@
 com.SDD
-com.SDD.controller
 com.SDD.graphic
+com.SDD.graphic.controller
 com.SDD.structure
 com.SDD.structureTest
-com.SDD.utilities
-com.SDD.utilitiesTest
+com.SDD.utility
+com.SDD.utilityTest
