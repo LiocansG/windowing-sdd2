@@ -1,6 +1,6 @@
 package com.SDD.structure;
 
-import com.SDD.utilities.Utility;
+import com.SDD.utility.Utility;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class PstWrapper {
     private PrioritySearchTree original;
     private PrioritySearchTreeO opposed;
     private PrioritySearchTreeE exchanged;
-    private PrioritySearchTreeOE opposed_exchanged;
+    private PrioritySearchTreeOE opposedExchanged;
 
     /**
      * Constructs a PstWrapper with the given list of segments, which initializes several Priority Search Trees with different segment orders to provide efficient windowing for specific types of windows.
@@ -22,7 +22,7 @@ public class PstWrapper {
         original = new PrioritySearchTree(segments);
         opposed = new PrioritySearchTreeO(segments);
         exchanged = new PrioritySearchTreeE(segments);
-        opposed_exchanged = new PrioritySearchTreeOE(segments);
+        opposedExchanged = new PrioritySearchTreeOE(segments);
     }
 
 
@@ -34,6 +34,11 @@ public class PstWrapper {
      * @return a list of segments that intersect the given window
      */
     public ArrayList<Segment> getWindow(Segment window, ArrayList<Double> windowSize){
+
+        if(window.getX() == windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() == windowSize.get(3)){
+            return original.getAllSegments();
+        }
+
         //[-∞, Y] x [X', Y']
         if(window.getX() == windowSize.get(0)) {
             return original.windowing(window);
@@ -41,22 +46,19 @@ public class PstWrapper {
 
         //[X, Y] x [+∞, Y']
         if(window.getxPrime() == windowSize.get(1)) {
-
             ArrayList<Segment> segments = opposed.windowing(Utility.oppose(window));
             return Utility.opposeArray(segments);
         }
 
         //[X, -∞] x [X', Y']
         if(window.getY() == windowSize.get(2)) {
-
             ArrayList<Segment> segments = exchanged.windowing(Utility.exchange(window));
             return Utility.exchangeArray(segments);
         }
 
         //[X, Y] x [X', +∞]
         if(window.getyPrime() == windowSize.get(3)) {
-
-            ArrayList<Segment> segments = opposed_exchanged.windowing(Utility.oppose(Utility.exchange(window)));
+            ArrayList<Segment> segments = opposedExchanged.windowing(Utility.oppose(Utility.exchange(window)));
             return  Utility.opposeArray(Utility.exchangeArray(segments));
         }
 
@@ -65,4 +67,41 @@ public class PstWrapper {
         segments.addAll(Utility.exchangeArray(exchanged.windowing(Utility.exchange(window))));
         return segments;
     }
+
+    /**
+     * Return the Original PST
+     *
+     * @return Return the Original PST
+     */
+    public PrioritySearchTree getOriginal() {
+        return original;
+    }
+
+    /**
+     * Return the opposed PST
+     *
+     * @return Return the Original PST
+     */
+    public PrioritySearchTreeO getOpposed() {
+        return opposed;
+    }
+
+    /**
+     * Return the exchanged PST
+     *
+     * @return Return the Original PST
+     */
+    public PrioritySearchTreeE getExchanged() {
+        return exchanged;
+    }
+
+    /**
+     * Return the Opposed & Exchanged PST
+     *
+     * @return Return the Original PST
+     */
+    public PrioritySearchTreeOE getOpposedExchanged() {
+        return opposedExchanged;
+    }
+
 }

@@ -2,9 +2,9 @@ package com.SDD.structureTest;
 
 import com.SDD.structure.Heap;
 import com.SDD.structure.Segment;
+import com.SDD.utility.SegmentCreator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import com.SDD.utilities.SegmentCreator;
 
 import java.util.ArrayList;
 import java.util.Random;

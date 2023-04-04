@@ -22,7 +22,6 @@ public class PSTNode {
         this.segment = segment;
         this.leftChild = leftChild;
         this.rightChild = rightChild;
-        this.median = 0;
     }
 
     /**
@@ -49,6 +48,21 @@ public class PSTNode {
      * @return the median value of the Segment's y-coordinates
      */
     public int getMedian() {
+        return median;
+    }
+
+    /**
+     * Returns the median value of the Segment's y-coordinates.
+     *
+     * @return the median value of the Segment's y-coordinates
+     */
+    public int getSpecialMedian(Boolean isRight) {
+        if(isLeaf()){
+            if (isRight){
+                return Integer.MAX_VALUE;
+            }
+            return Integer.MIN_VALUE;
+        }
         return median;
     }
 

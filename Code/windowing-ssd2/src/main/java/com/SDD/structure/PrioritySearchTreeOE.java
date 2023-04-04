@@ -1,6 +1,6 @@
 package com.SDD.structure;
 
-import com.SDD.utilities.Utility;
+import com.SDD.utility.Utility;
 
 import java.util.ArrayList;
 

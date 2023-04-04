@@ -1,7 +1,9 @@
-package com.SDD.controller;
+package com.SDD.graphic.controller;
 
 import com.SDD.graphic.MainApplication;
-import com.SDD.utilities.AlertDisplay;
+import com.SDD.structure.PstWrapper;
+import com.SDD.structure.Segment;
+import com.SDD.utility.Alert;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,12 +13,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import com.SDD.structure.PstWrapper;
-import com.SDD.structure.Segment;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -157,7 +158,7 @@ public class Controller {
     private boolean isWindowGood(){
         boolean isGood = true;
         if(window.getX() > window.getxPrime() || window.getY() > window.getyPrime()){
-            AlertDisplay.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be greater than (X', Y')");
+            Alert.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be greater than (X', Y')");
             isGood = false;
         } else if (!((window.getX() == windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() == windowSize.get(3))
                 ||(window.getX() == windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
@@ -165,7 +166,7 @@ public class Controller {
                 ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() != windowSize.get(3))
                 ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() == windowSize.get(3))
                 ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3)))){
-            AlertDisplay.alertDisplay(MainApplication.getAlert(), "We are only covering the following: \n" +
+            Alert.alertDisplay(MainApplication.getAlert(), "We are only covering the following: \n" +
                     "\t -[X, X'] x [Y, Y']\n" +
                     "\t -[-\u221e, X'] x [Y, Y']\n" +
                     "\t -[X, +\u221e] x [Y, Y']\n" +

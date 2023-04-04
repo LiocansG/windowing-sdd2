@@ -1,4 +1,4 @@
-package com.SDD.utilities;
+package com.SDD.utility;
 
 import com.SDD.structure.Segment;
 

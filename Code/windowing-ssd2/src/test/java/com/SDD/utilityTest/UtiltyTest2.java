@@ -1,7 +1,7 @@
-package com.SDD.utilitiesTest;
+package com.SDD.utilityTest;
 
 import com.SDD.structure.Segment;
-import com.SDD.utilities.Utility;
+import com.SDD.utility.Utility;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

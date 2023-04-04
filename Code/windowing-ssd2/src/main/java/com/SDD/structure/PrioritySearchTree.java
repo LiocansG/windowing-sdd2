@@ -81,6 +81,30 @@ public class PrioritySearchTree {
         return root;
     }
 
+    /**
+     * Get all the segments of the PST
+     *
+     * @return the arraylist of all the segment of the PST
+     */
+    public ArrayList<Segment> getAllSegments() {
+        return getAllSegments(root);
+    }
+
+    /**
+     * Get all the segments of the PST
+     *
+     * @param root root node of the PST
+     * @return the arraylist of all the segment of the PST
+     */
+    private ArrayList<Segment> getAllSegments(PSTNode root) {
+        ArrayList<Segment> segments = new ArrayList<>();
+        if (root != null) {
+            segments.add(root.getSegment());
+            segments.addAll(getAllSegments(root.getLeftChild()));
+            segments.addAll(getAllSegments(root.getRightChild()));
+        }
+        return segments;
+    }
 
     /**
      * Returns the list of segments that intersect with the given window.
@@ -101,7 +125,7 @@ public class PrioritySearchTree {
      * @param window the window to search for intersecting segments
      * @param segments the list of intersecting segments
      */
-    public void windowing(PSTNode node, Segment window, ArrayList<Segment> segments){
+    private void windowing(PSTNode node, Segment window, ArrayList<Segment> segments){
         if(node == null) return;
 
         Segment segment = node.getSegment();
