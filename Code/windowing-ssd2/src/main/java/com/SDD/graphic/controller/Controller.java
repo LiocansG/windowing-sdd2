@@ -158,7 +158,7 @@ public class Controller {
     private boolean isWindowGood(){
         boolean isGood = true;
         if(window.getX() > window.getxPrime() || window.getY() > window.getyPrime()){
-            Alert.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be greater than (X', Y')");
+            Alert.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be smaller than (X', Y')");
             isGood = false;
         } else if (!((window.getX() == windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() == windowSize.get(3))
                 ||(window.getX() == windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
@@ -176,7 +176,6 @@ public class Controller {
         }
         return isGood;
     }
-
 
     //---------------------ComboBox----------------------------//
 

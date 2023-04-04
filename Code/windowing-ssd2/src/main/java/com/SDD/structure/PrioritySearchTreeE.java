@@ -17,5 +17,4 @@ public class PrioritySearchTreeE extends PrioritySearchTree{
     public PrioritySearchTreeE(ArrayList<Segment> segments) {
         super(Utility.exchangeArray(segments));
     }
-
 }

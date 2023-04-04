@@ -17,5 +17,4 @@ public class PrioritySearchTreeO extends PrioritySearchTree{
     public PrioritySearchTreeO(ArrayList<Segment> segments) {
         super(Utility.opposeArray(segments));
     }
-
 }
