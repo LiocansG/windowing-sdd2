@@ -10,7 +10,7 @@ public abstract class Heap {
 
     /**
      * Heapifies the given ArrayList of Segments in-place using the heap sort algorithm.
-     * The segments are sorted based on their y-coordinates in descending order.
+     * The segments are sorted based on their y-coordinates.
      *
      * @param segments the ArrayList of Segments to be heapified
      */
@@ -20,7 +20,7 @@ public abstract class Heap {
             heapify(segments, i, size);
         }
 
-        // Extract elements from the heap in decreasing order and store them back in the array list
+        // Extract elements from the heap in increasing order and store them back in the array list
         for (int i = size - 1; i > 0; i--) {
             Segment temp = segments.get(0);
             segments.set(0, segments.get(i));
@@ -31,7 +31,7 @@ public abstract class Heap {
 
     /**
      * Heapifies the subtree rooted at the given index in the ArrayList of Segments.
-     * The segments are sorted based on their y-coordinates in descending order.
+     * The segments are sorted based on their y-coordinates.
      *
      * @param segments the ArrayList of Segments containing the subtree to be heapified
      * @param index the root index of the subtree to be heapified

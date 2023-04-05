@@ -9,7 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="39b2bc9b-48cb-4530-b5f3-dda0ca40c11b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/controller/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/graphic/controller/WindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/Heap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/Heap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeOE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SDD/structure/PrioritySearchTreeOE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/uml/SDD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/uml/SDD.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/uml/SDD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/uml/SDD.puml" afterDir="false" />
     </list>
@@ -205,10 +209,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeapTest (1)" />
         <item itemvalue="Gradle.SegmentTest" />
         <item itemvalue="Gradle.PrioritySearchTreeTest" />
         <item itemvalue="Gradle.HeapTest" />
-        <item itemvalue="Gradle.HeapTest (1)" />
         <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>

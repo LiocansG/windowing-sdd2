@@ -5,12 +5,12 @@ import com.SDD.utility.Utility;
 import java.util.ArrayList;
 
 /**
- * Extension of the Priority Search Tree that reverses the order of the segments to prioritize segments with higher y-coordinates over those with lower y-coordinates, and also exchanges the order of the segments to prioritize the y-coordinate over the x-coordinate.
+ * Extension of a priority search tree for which the coordinates of the segments have been swapped and opposed, i.e. the X and Y have been swapped and then opposed.
  */
 public class PrioritySearchTreeOE extends PrioritySearchTree{
 
     /**
-     * Constructs a PrioritySearchTreeOE with the given segments, where the order of the segments has been reversed to prioritize segments with higher y-coordinates over those with lower y-coordinates, and the order has also been exchanged to prioritize the y-coordinate over the x-coordinate.
+     * Constructs a PrioritySearchTreeOE with the given segments, where the order of the segments has been reversed and exchanged
      *
      * @param segments the list of segments to construct the PrioritySearchTreeOE with
      */

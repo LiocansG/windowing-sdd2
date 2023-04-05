@@ -9,6 +9,9 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * An abstract class for controlling window on a canvas.
+ */
 public abstract class WindowController {
 
     /**

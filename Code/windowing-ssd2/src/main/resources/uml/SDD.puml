@@ -1,4 +1,5 @@
 @startuml
+left to right direction
 class TestMain {
 + {static} void main(String[])
 }
@@ -137,7 +138,8 @@ class PrioritySearchTree {
 - boolean checkCrossLeft(Segment,Segment)
 }
 
-
+Application <|-- MainApplication
+TestMain -- MainApplication : Call >
 PrioritySearchTree <|-- PrioritySearchTreeOE
 PrioritySearchTree <|-- PrioritySearchTreeO
 PrioritySearchTree <|-- PrioritySearchTreeE
@@ -145,19 +147,17 @@ PSTNode --* PrioritySearchTree
 PSTNode *-- PSTNode : leftChild
 PSTNode --* PSTNode : rightChild
 PSTNode *-- Segment
-Application <|-- MainApplication
-TestMain - MainApplication : Call >
-PrioritySearchTree --* PstWrapper
-PrioritySearchTreeOE --* PstWrapper
-PrioritySearchTreeO --* PstWrapper
-PrioritySearchTreeE --* PstWrapper
-Segment -  Utility : Use <
-PrioritySearchTree - Heap : Use >
-Controller - Alert : Use >
-Controller -d- WindowController : Use >
-Controller -d- SegmentController : Use >
-Controller -d- CanvasController : Use >
-Controller -d- ComboBoxController : Use >
+PrioritySearchTree --* PstWrapper : 1..*
+PrioritySearchTreeOE --* PstWrapper : 1..*
+PrioritySearchTreeO --* PstWrapper : 1..*
+PrioritySearchTreeE --* PstWrapper : 1..*
+Segment --  Utility : Use <
+PrioritySearchTree -- Heap : Use >
+Controller -- Alert : Use >
+Controller -- WindowController : Use >
+Controller -r- SegmentController : Use >
+Controller -- CanvasController : Use >
+Controller -u- ComboBoxController : Use >
 Segment --* Controller
 SegmentCreator -- Segment : Use >
 @enduml
