@@ -2,26 +2,31 @@
 class TestMain {
 + {static} void main(String[])
 }
-
+abstract class ComboBoxController {
++ {static} void fillComboBoxItem(ComboBox<String>,String)
+- {static} void desactivateEventComboBox(ComboBox<String>)
+}
 class PrioritySearchTreeOE {
 }
-
 class PrioritySearchTreeO {
 }
-
 abstract class Alert {
 + {static} void alertDisplay(javafx.scene.control.Alert,String)
 }
-
+abstract class CanvasController {
+- {static} GraphicsContext gc
++ {static} void resetZoomAndPosition(Canvas)
++ {static} void canvasInit(Canvas)
++ {static} void changeCanvasColor(Canvas)
++ {static} GraphicsContext getGc()
+}
 class PrioritySearchTreeE {
 }
-
 class SegmentCreator {
 + {static} void main(String[])
 - {static} void writeSegmentsFile(int,int)
 + {static} double[] segmentRandomCreation(int)
 }
-
 class PstWrapper {
 - PrioritySearchTree original
 - PrioritySearchTreeO opposed
@@ -33,14 +38,26 @@ class PstWrapper {
 + PrioritySearchTreeE getExchanged()
 + PrioritySearchTreeOE getOpposedExchanged()
 }
-
+abstract class WindowController {
++ {static} void changeWindow(Segment,ArrayList<Double>,TextField,TextField,TextField,TextField)
++ {static} void drawWindow(GraphicsContext,Segment)
++ {static} boolean isWindowGood(Segment,ArrayList<Double>)
+}
 abstract class Utility {
 + {static} ArrayList<Segment> opposeArray(ArrayList<Segment>)
 + {static} ArrayList<Segment> exchangeArray(ArrayList<Segment>)
 + {static} Segment oppose(Segment)
 + {static} Segment exchange(Segment)
 }
-
+abstract class SegmentController {
+- {static} double ratio
+- {static} double canvasWidth
++ {static} double applyRatio(double)
+- {static} void drawSegment(Segment,GraphicsContext)
++ {static} void drawSegments(Segment,ArrayList<Double>,PstWrapper,GraphicsContext,Text)
++ {static} void setRatio(double)
++ {static} void setCanvasWidth(double)
+}
 class PSTNode {
 - Segment segment
 - int median
@@ -56,7 +73,6 @@ class PSTNode {
 + void setRightChild(PSTNode)
 + boolean isLeaf()
 }
-
 class Segment {
 - double x
 - double y
@@ -73,7 +89,6 @@ class Segment {
 + Segment clone()
 + String toString()
 }
-
 class Controller {
 - ComboBox<String> directoryComboBox
 - Canvas canvas
@@ -83,33 +98,19 @@ class Controller {
 - String path
 - PstWrapper pstWrapper
 - ArrayList<Double> windowSize
-- Double ratio
-- GraphicsContext gc
 - Segment window
 - double canvasX
-- ArrayList<Segment> segments
 + void initialize()
++ void loadingSegmentFromFile()
 + void changeDirectory()
 + void clearCanvas()
 + void draw()
 + void resetCoordinates()
-- void changeWindow()
-- void drawWindow()
-- boolean isWindowGood()
-- void fillComboBoxItem()
-- void desactivateEventComboBox()
-- double applyRatio(double)
-- void drawSegment(Segment)
-+ void drawSegments()
-+ void loadingSegmentFromFile()
-- void canvasInit()
-- void resetZoomAndPosition()
 + void setOnScroll(ScrollEvent)
 + void setOnMousePressed(MouseEvent)
 + void setOnMouseReleased()
 + void setOnMouseDragged(MouseEvent)
 }
-
 class MainApplication {
 - {static} Stage stage
 - {static} Alert alert
@@ -118,12 +119,10 @@ class MainApplication {
 + {static} Stage getStage()
 + {static} Alert getAlert()
 }
-
 abstract class Heap {
 + {static} void heapify(ArrayList<Segment>)
 + {static} void heapify(ArrayList<Segment>,int,int)
 }
-
 class PrioritySearchTree {
 - PSTNode root
 - PSTNode buildPST(ArrayList<Segment>)
@@ -147,13 +146,18 @@ PSTNode *-- PSTNode : leftChild
 PSTNode --* PSTNode : rightChild
 PSTNode *-- Segment
 Application <|-- MainApplication
+TestMain - MainApplication : Call >
 PrioritySearchTree --* PstWrapper
 PrioritySearchTreeOE --* PstWrapper
 PrioritySearchTreeO --* PstWrapper
 PrioritySearchTreeE --* PstWrapper
 Segment -  Utility : Use <
-TestMain - MainApplication : Call >
 PrioritySearchTree - Heap : Use >
 Controller - Alert : Use >
+Controller -d- WindowController : Use >
+Controller -d- SegmentController : Use >
+Controller -d- CanvasController : Use >
+Controller -d- ComboBoxController : Use >
 Segment --* Controller
+SegmentCreator -- Segment : Use >
 @enduml

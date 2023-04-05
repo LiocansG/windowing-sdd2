@@ -3,7 +3,6 @@ package com.SDD.graphic.controller;
 import com.SDD.graphic.MainApplication;
 import com.SDD.structure.PstWrapper;
 import com.SDD.structure.Segment;
-import com.SDD.utility.Alert;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -46,11 +45,8 @@ public class Controller {
     private String path = "src/main/resources/data_test";
     private PstWrapper pstWrapper;
     private ArrayList<Double> windowSize;
-    private Double ratio;
-    private GraphicsContext gc;
     private Segment window;
     private double canvasX, canvasY, mouseX, mouseY = 0;
-    private ArrayList<Segment> segments;
 
     /**
      * Initializes the Controller instance by setting up the user interface and loading the
@@ -60,192 +56,14 @@ public class Controller {
      */
     @FXML
     public void initialize() throws IOException {
-        canvasInit();
-        fillComboBoxItem();
+        CanvasController.canvasInit(canvas);
+        ComboBoxController.fillComboBoxItem(directoryComboBox, path);
         loadingSegmentFromFile();
         window = new Segment(windowSize.get(0), windowSize.get(2), windowSize.get(1), windowSize.get(3));
         resetCoordinates();
     }
 
-    //----------------------Directory--------------------------//
-
-    /**
-     * Changes the directory path used for loading segment data files. Shows a directory chooser
-     * dialog to allow the user to select a new directory.
-     */
-    public void changeDirectory(){
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File defaultDirectory = new File(path);
-        directoryChooser.setInitialDirectory(defaultDirectory);
-        File selectedDirectory = directoryChooser.showDialog(MainApplication.getStage());
-        if (selectedDirectory != null) {
-            path = selectedDirectory.getAbsolutePath();
-            fillComboBoxItem();
-        }
-    }
-
-
-    //---------------------Drawing-----------------------------//
-
-    /**
-     * Clears the canvas and resets the zoom and position. Draws the window and all segments
-     * that are contained within it.
-     */
-    public void clearCanvas(){
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-    }
-
-    /**
-     * Clears the canvas by filling it with a transparent color and saves the current state
-     * of the graphics context.
-     */
-    public void draw(){
-        clearCanvas();
-        resetZoomAndPosition();
-        changeWindow();
-        if(isWindowGood()){
-            drawWindow();
-            drawSegments();
-            numberSegment.setText("Number of segment: " + segments.size());
-        }
-    }
-
-    //---------------------Window------------------------------//
-
-    /**
-     * Resets the coordinates displayed in the text fields to negative infinity and positive
-     * infinity, respectively.
-     */
-    public void resetCoordinates(){
-        xField.setText("-" + '\u221E');
-        xPrimeField.setText("+" + '\u221E');
-        yField.setText("-" + '\u221E');
-        yPrimeField.setText("+" + '\u221E');
-    }
-
-    /**
-     * Changes the values of the window based on the current values in the text fields.
-     */
-    private void changeWindow(){
-        window.setX((xField.getText().contains("\u221E") || Double.parseDouble(xField.getText()) < windowSize.get(0)) ? windowSize.get(0): Double.parseDouble(xField.getText()));
-        window.setY((yField.getText().contains("\u221E") || Double.parseDouble(yField.getText()) < windowSize.get(2)) ? windowSize.get(2) : Double.parseDouble(yField.getText()));
-        window.setxPrime((xPrimeField.getText().contains("\u221E") || Double.parseDouble(xPrimeField.getText()) > windowSize.get(1)) ? windowSize.get(1) : Double.parseDouble(xPrimeField.getText()));
-        window.setyPrime((yPrimeField.getText().contains("\u221E") || Double.parseDouble(yPrimeField.getText()) > windowSize.get(3))? windowSize.get(3) : Double.parseDouble(yPrimeField.getText()));
-    }
-
-    /**
-     * Draws the window on the canvas using a red color and a 2-pixel wide stroke.
-     */
-    private void drawWindow(){
-        gc.setStroke(Color.RED);
-        gc.setLineWidth(2);
-        gc.strokeRect(
-                applyRatio(window.getX()),
-                applyRatio(window.getY()),
-                applyRatio(window.getxPrime()) - applyRatio(window.getX()),
-                applyRatio(window.getyPrime()) - applyRatio(window.getY())
-        );
-        gc.setStroke(Color.BLACK);
-    }
-
-    /**
-     * Checks if the current window is valid, meaning that its x and y values are less
-     * than its xPrime and yPrime values, respectively.
-     *
-     * @return true if the window segment is valid, false otherwise.
-     */
-    private boolean isWindowGood(){
-        boolean isGood = true;
-        if(window.getX() > window.getxPrime() || window.getY() > window.getyPrime()){
-            Alert.alertDisplay(MainApplication.getAlert(), "The first point (X, Y) must be smaller than (X', Y')");
-            isGood = false;
-        } else if (!((window.getX() == windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() == windowSize.get(3))
-                ||(window.getX() == windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
-                ||(window.getX() != windowSize.get(0) && window.getxPrime() == windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3))
-                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() == windowSize.get(2) && window.getyPrime() != windowSize.get(3))
-                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() == windowSize.get(3))
-                ||(window.getX() != windowSize.get(0) && window.getxPrime() != windowSize.get(1) && window.getY() != windowSize.get(2) && window.getyPrime() != windowSize.get(3)))){
-            Alert.alertDisplay(MainApplication.getAlert(), "We are only covering the following: \n" +
-                    "\t -[X, X'] x [Y, Y']\n" +
-                    "\t -[-\u221e, X'] x [Y, Y']\n" +
-                    "\t -[X, +\u221e] x [Y, Y']\n" +
-                    "\t -[X, X'] x [-\u221e, Y']\n" +
-                    "\t -[X, X'] x [Y, +\u221e]");
-            isGood = false;
-        }
-        return isGood;
-    }
-
-    //---------------------ComboBox----------------------------//
-
-    /**
-     * Fills the combo box with items corresponding to the segment data files in the current
-     * directory path.
-     */
-    private void fillComboBoxItem(){
-        desactivateEventComboBox();
-        File file = new File(path);
-        File[] files = file.listFiles();
-        ArrayList<String> listFiles = new ArrayList<>();
-        assert files != null;
-        for (File f : files) {
-            listFiles.add(f.getName());
-        }
-
-        directoryComboBox.getItems().addAll(listFiles);
-        directoryComboBox.setValue(listFiles.get(0));
-    }
-
-    /**
-     * Deactivates the action event of the combo box temporarily to remove all items from it.
-     */
-    private void desactivateEventComboBox(){
-        EventHandler<ActionEvent> handler = directoryComboBox.getOnAction();
-        directoryComboBox.setOnAction(null);
-        directoryComboBox.getItems().removeAll(directoryComboBox.getItems());
-        directoryComboBox.setOnAction(handler);
-    }
-
-
-    //---------------------Segment----------------------------//
-
-    /**
-     * Applies the current ratio to the given value and returns the result.
-     *
-     * @param value the value to apply the ratio to
-     * @return the result of applying the ratio to the value
-     */
-    private double applyRatio(double value){
-        return (value * ratio) + (canvas.getWidth()/2);
-    }
-
-    /**
-     * Draws the given segment on the canvas.
-     *
-     * @param segment the segment to draw
-     */
-    private void drawSegment(Segment segment) {
-        gc.strokeLine(
-                applyRatio(segment.getX()),
-                applyRatio(segment.getY()),
-                applyRatio(segment.getxPrime()),
-                applyRatio(segment.getyPrime())
-        );
-    }
-
-    /**
-     * Draws all the segment on the canvas.
-     */
-    public void drawSegments(){
-        gc.setStroke(Color.BLACK);
-        gc.setLineWidth(1);
-        segments = pstWrapper.getWindow(window, windowSize);
-        for (Segment segment : segments) {
-            drawSegment(segment);
-        }
-    }
-
+    //------------------------FILE------------------------------//
     /**
      * Loads a segment from a file and updates the PST wrapper.
      *
@@ -266,7 +84,7 @@ public class Controller {
             windowSize.add(Double.parseDouble(temp[i]));
         }
 
-        ratio = Math.min(canvas.getWidth() / (Math.abs(windowSize.get(0)) + Math.abs(windowSize.get(2))), canvas.getHeight() / (Math.abs(windowSize.get(1)) + Math.abs(windowSize.get(3))));
+        SegmentController.setRatio(Math.min(canvas.getWidth() / (Math.abs(windowSize.get(0)) + Math.abs(windowSize.get(2))), canvas.getHeight() / (Math.abs(windowSize.get(1)) + Math.abs(windowSize.get(3)))));
 
         while ((line = br.readLine()) != null) {
             temp = line.split(" ");
@@ -279,28 +97,64 @@ public class Controller {
         pstWrapper = new PstWrapper(segments);
     }
 
-    //--------------------------Canvas-------------------------//
-    private void canvasInit(){
-        gc = canvas.getGraphicsContext2D();
-        gc.scale(1, -1);
-        gc.translate(0, -canvas.getHeight());
-    }
-
-    //----------------------Canvas Control--------------------//
+    //----------------------Directory--------------------------//
 
     /**
-     * Resets the canvas zoom and position to their default values.
+     * Changes the directory path used for loading segment data files. Shows a directory chooser
+     * dialog to allow the user to select a new directory.
      */
-    private void resetZoomAndPosition(){
-        // Reset canvas position
-        canvas.setTranslateX(0);
-        canvas.setTranslateY(0);
-
-        // Reset zoom
-        canvas.setScaleX(1);
-        canvas.setScaleY(1);
-        canvas.setTranslateZ(0);
+    public void changeDirectory(){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File defaultDirectory = new File(path);
+        directoryChooser.setInitialDirectory(defaultDirectory);
+        File selectedDirectory = directoryChooser.showDialog(MainApplication.getStage());
+        if (selectedDirectory != null) {
+            path = selectedDirectory.getAbsolutePath();
+            ComboBoxController.fillComboBoxItem(directoryComboBox, path);
+        }
     }
+
+
+    //---------------------Drawing-----------------------------//
+
+    /**
+     * Clears the canvas and resets the zoom and position. Draws the window and all segments
+     * that are contained within it.
+     */
+    public void clearCanvas(){
+        CanvasController.getGc().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    /**
+     * Clears the canvas by filling it with a transparent color and saves the current state
+     * of the graphics context.
+     */
+    public void draw(){
+        clearCanvas();
+        CanvasController.resetZoomAndPosition(canvas);
+        WindowController.changeWindow(window, windowSize, xField, yField, xPrimeField, yPrimeField);
+        if(WindowController.isWindowGood(window, windowSize)){
+            CanvasController.changeCanvasColor(canvas);
+            WindowController.drawWindow(CanvasController.getGc(), window);
+            SegmentController.drawSegments(window, windowSize, pstWrapper, CanvasController.getGc(), numberSegment);
+        }
+    }
+
+    //---------------------Window------------------------------//
+
+    /**
+     * Resets the coordinates displayed in the text fields to negative infinity and positive
+     * infinity, respectively.
+     */
+    public void resetCoordinates(){
+        xField.setText("-" + '\u221E');
+        xPrimeField.setText("+" + '\u221E');
+        yField.setText("-" + '\u221E');
+        yPrimeField.setText("+" + '\u221E');
+    }
+
+
+    //----------------------Canvas Control--------------------//
 
     /**
      * Handles the scroll event to zoom in or out of the canvas.
@@ -313,9 +167,6 @@ public class Controller {
         double newScale = currentScale * zoomFactor;
         canvas.setScaleX(newScale);
         canvas.setScaleY(newScale);
-        clearCanvas();
-        drawWindow();
-        drawSegments();
     }
 
     /**
@@ -328,8 +179,8 @@ public class Controller {
         scrollPane.setMouseTransparent(true);
         mouseX = event.getSceneX();
         mouseY = event.getSceneY();
-        canvasX = canvas.getLayoutX();
-        canvasY = canvas.getLayoutY();
+        canvasX = canvas.getTranslateX();
+        canvasY = canvas.getTranslateY();
     }
 
     /**
