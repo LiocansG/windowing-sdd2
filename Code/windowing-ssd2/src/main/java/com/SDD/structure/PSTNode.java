@@ -7,7 +7,7 @@ package com.SDD.structure;
 
 public class PSTNode {
     private final Segment segment;
-    private int median;
+    private double median;
     private PSTNode leftChild;
     private PSTNode rightChild;
 
@@ -47,7 +47,7 @@ public class PSTNode {
      *
      * @return the median value of the Segment's y-coordinates
      */
-    public int getMedian() {
+    public double getMedian() {
         return median;
     }
 
@@ -56,7 +56,7 @@ public class PSTNode {
      *
      * @return the median value of the Segment's y-coordinates
      */
-    public int getSpecialMedian(Boolean isRight) {
+    public double getSpecialMedian(Boolean isRight) {
         if(isLeaf()){
             if (isRight){
                 return Integer.MAX_VALUE;
@@ -71,7 +71,7 @@ public class PSTNode {
      *
      * @param median the new median value to be set
      */
-    public void setMedian(int median) {
+    public void setMedian(double median) {
         this.median = median;
     }
 

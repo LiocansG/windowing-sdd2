@@ -47,7 +47,7 @@ public class PrioritySearchTree {
         if(segments.size() > 0){
             // Know were is the median
             int median = segments.size() / 2;
-            node.setMedian((int) segments.get(median).getY());
+            node.setMedian(segments.get(median).getY());
             node.setLeftChild(buildPST(new ArrayList<>(segments.subList(0, median))));
             node.setRightChild(buildPST(new ArrayList<>(segments.subList(median, segments.size()))));
         }
