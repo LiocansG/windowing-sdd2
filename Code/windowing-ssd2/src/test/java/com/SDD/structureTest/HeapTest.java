@@ -29,12 +29,12 @@ public class HeapTest {
     }
 
     /**
-     * {@link Heap#heapify}
+     * {@link Heap#sort}
      */
     @Test
     public void heapify(){
         Boolean arraySorted = true;
-        Heap.heapify(segments);
+        Heap.sort(segments);
         System.out.println(segments);
         // Check if the segments are sorted in non-decreasing order of their Y-coordinates
         for (int i = 1; i < segments.size(); i++) {

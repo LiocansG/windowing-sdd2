@@ -14,7 +14,7 @@ public abstract class Heap {
      *
      * @param segments the ArrayList of Segments to be heapified
      */
-    public static void heapify(ArrayList<Segment> segments){
+    public static void sort(ArrayList<Segment> segments){
         int size = segments.size();
         for(int i = (size / 2) - 1; i >= 0; i--){
             heapify(segments, i, size);
@@ -37,7 +37,7 @@ public abstract class Heap {
      * @param index the root index of the subtree to be heapified
      * @param size the size of the subtree to be heapified
      */
-    public static void heapify(ArrayList<Segment> segments, int index, int size) {
+    private static void heapify(ArrayList<Segment> segments, int index, int size) {
         int largest = index;
         int left = 2 * index + 1;
         int right = 2 * index + 2;

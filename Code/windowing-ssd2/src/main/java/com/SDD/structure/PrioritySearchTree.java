@@ -16,7 +16,7 @@ public class PrioritySearchTree {
     public PrioritySearchTree(ArrayList<Segment> segments){
 
         // Sort the segments by their y-coordinate
-        Heap.heapify(segments);
+        Heap.sort(segments);
         root = buildPST(segments);
     }
 
