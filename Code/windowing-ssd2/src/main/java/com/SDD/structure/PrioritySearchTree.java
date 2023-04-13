@@ -133,9 +133,11 @@ public class PrioritySearchTree {
             segments.add(segment);
         }
 
-        if(node.getMedian() >= window.getY()) {
+       /* if(node.getMedian() >= window.getY()) {
             windowing(node.getLeftChild(), window, segments);
-        }
+        }*/
+
+        windowing(node.getLeftChild(), window, segments);
 
         if(node.getMedian() <= window.getyPrime()) {
             windowing(node.getRightChild(), window, segments);
