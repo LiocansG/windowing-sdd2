@@ -36,25 +36,6 @@ public abstract class ComboBoxController {
     }
 
     /**
-     * Fills the combo box with items corresponding to the segment data files in the current
-     * directory path.
-     *
-     * @param directoryComboBox The combo box to fill with items.
-     */
-    public static void fillComboBoxItem(ComboBox<String> directoryComboBox, InputStream inputStream ){
-        desactivateEventComboBox(directoryComboBox);
-        Scanner scanner = new Scanner(inputStream);
-        ArrayList<String> listFiles = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            listFiles.add(scanner.nextLine());
-        }
-        scanner.close();
-
-        directoryComboBox.getItems().addAll(listFiles);
-        directoryComboBox.setValue(listFiles.get(0));
-    }
-
-    /**
      * Deactivates the action event of the combo box temporarily to remove all items from it.
      *
      * @param directoryComboBox The combo box to deactivate the event for.
