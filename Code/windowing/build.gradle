@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+group 'com.SDD'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+javafx {
+    version = "19"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainModule = 'com.SDD'
+    mainClassName = "com.SDD.TestMain"
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': "com.SDD.TestMain"
+        )
+    }
+}
